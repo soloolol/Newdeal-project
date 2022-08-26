@@ -1,0 +1,139 @@
+<template>
+  <v-app>
+    <v-app-bar
+      style="background:#FFFFFF;"
+      light
+      absolute
+      app
+      hide-on-scroll
+      scroll-target="#main"
+      elevation="2"
+    >
+      <v-spacer></v-spacer>
+      <div class="d-flex align-center">
+<!--   <v-img
+          alt="nunukang"
+          class="shrink mt-1"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        /> -->
+        <h2 class="headline font-weight-semibold pl-10" style="color:black;">
+          NuNuKang
+        </h2>
+      </div>
+      <v-spacer></v-spacer>
+      <div>
+        <v-btn
+          icon
+          value="account"
+        >
+          <v-icon top>
+            mdi-account
+          </v-icon>
+        </v-btn>
+      </div>
+    </v-app-bar>
+
+    <v-main id="main">
+      <HelloWorld/>
+    </v-main>
+    
+    <v-bottom-navigation
+      app
+      style="background:#FFFFFF; border-radius: 5px, 5px, 0, 0;"
+    >
+      <v-btn
+        value="rank"
+        style="background-color: #FFFFFF;"
+        class="mt-1"
+      >
+        <span>랭킹</span>
+
+        <v-icon>mdi-podium-gold</v-icon>
+      </v-btn>
+
+      <v-btn 
+        value="point" 
+        style="background-color: #FFFFFF;"
+        class="mt-1"
+      >
+        <span>지도</span>
+
+        <v-icon>mdi-map-marker-radius-outline</v-icon>
+      </v-btn>
+
+      <v-btn 
+        fab
+        style="background-color: #FFFFFF;"
+        large
+      >
+<!--       <v-icon>mdi-camera-iris</v-icon> --> 
+        <div class="home-btn" style="width:80px;">
+        </div>
+      </v-btn>
+
+      <v-btn
+        value="weather"
+        style="background-color: #FFFFFF;"
+        class="mt-1"
+      >
+        <span>날씨</span>
+
+        <v-icon>mdi-weather-sunny</v-icon>
+      </v-btn>
+
+      <v-btn
+        value="search"
+        style="background-color: #FFFFFF;"
+        class="mt-1"
+      >
+        <span>검색</span>
+
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
+    <v-btn 
+      outlined
+      fab
+      value="home" 
+      style="background-color: #FFFFFF;overflow:hidden;z-index:10; position:fixed;left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);"
+      x-large
+      color="blue"
+      class="mb-2"
+    >
+      <div class="home-btn">
+      <img
+        :src="require('./assets/small_logo.png')"
+        contain
+        class="shrink"
+        style="height:35px;transform: rotate(25deg);"
+      />
+      </div>
+    </v-btn>
+  </v-app>
+</template>
+
+<script>
+import HelloWorld from './components/HelloWorld';
+
+export default {
+  name: 'App',
+
+  components: {
+    HelloWorld,
+  },
+
+  data () {
+    return {
+      value: 1,
+      active: true,
+    }
+  },
+};
+</script>
+
+<style scoped>
+
+</style>
