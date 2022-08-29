@@ -37,7 +37,7 @@
     </v-app-bar>
 
     <v-main id="main" style="display: flex; justify-content: center;">
-      <Camera/>
+      <router-view/>
     </v-main>
     
     <v-bottom-navigation
@@ -48,6 +48,7 @@
         value="rank"
         style="background-color: #FFFFFF;"
         class="mt-1"
+        @click="$router.push({name:'rank'})"
       >
         <span>랭킹</span>
 
@@ -58,6 +59,7 @@
         value="point" 
         style="background-color: #FFFFFF;"
         class="mt-1"
+        @click="$router.push({name:'map'})"
       >
         <span>지도</span>
 
@@ -78,6 +80,7 @@
         value="weather"
         style="background-color: #FFFFFF;"
         class="mt-1"
+        @click="$router.push({name:'weather'})"
       >
         <span>날씨</span>
 
@@ -88,6 +91,7 @@
         value="search"
         style="background-color: #FFFFFF;"
         class="mt-1"
+        @click="$router.push({name:'search'})"
       >
         <span>검색</span>
 
@@ -102,6 +106,7 @@
       x-large
       color="blue"
       class="mb-2"
+      @click="$router.push({name:'home'})"
     >
       <div class="home-btn">
       <img

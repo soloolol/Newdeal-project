@@ -18,11 +18,9 @@
                     </button>
                 </div>
             </div>
-            <div style="width:320px; height:600px;">
-                <div v-if="isCameraOpen" class="camera-canvas">
-                    <video ref="camera" :width="canvasWidth" :height="canvasHeight" autoplay></video>
-                    <canvas v-show="false" id="photoTaken" ref="canvas" :width="canvasWidth" :height="canvasHeight"></canvas>
-                </div>
+            <div v-if="isCameraOpen" class="camera-canvas" style="width:videoWidth; height:videoHeight; overflow: hidden;">
+                <canvas v-show="false" id="photoTaken" ref="canvas" :width="videoWidth" :height="videoHeight"></canvas>
+                <video ref="camera" :width="videoWidth" :height="videoHeight" style="width:videoWidth; height:videoHeight;" autoplay playsinline></video>
             </div>
             <vue-picture-swipe :items="items"></vue-picture-swipe>
         </div>
@@ -37,14 +35,12 @@
         components: {
             VuePictureSwipe
         },
-        data() {
-            return {
-                isCameraOpen: false,
-                canvasHeight:640,
-                canvasWidth:320,
-                items: [],
-            }
-        },
+        data: ()=> ({
+            isCameraOpen: false,
+            videoHeight:640,
+            videoWidth:320,
+            items: [], 
+        }),
         methods: {
             toggleCamera() {
                 if (this.isCameraOpen) {
@@ -58,7 +54,7 @@
             startCameraStream() {
                 const constraints = (window.constraints = {
                     audio: false,
-                    video: true
+                    video: true,
                 });
                 navigator.mediaDevices
                     .getUserMedia(constraints)
@@ -81,7 +77,7 @@
                 let self = this;
                 setTimeout(() => {
                     const context = self.$refs.canvas.getContext('2d');
-                    context.drawImage(self.$refs.camera, 0, 0, self.canvasWidth, self.canvasHeight);
+                    context.drawImage(self.$refs.camera, 0, 0, self.videoWidth, self.videoHeight);
                     const dataUrl = self.$refs.canvas.toDataURL("image/jpeg")
                         .replace("image/jpeg", "image/octet-stream");
                     self.addToPhotoGallery(dataUrl);
@@ -96,8 +92,8 @@
                     {
                         src: dataURI,
                         thumbnail: dataURI,
-                        w: this.canvasWidth,
-                        h: this.canvasHeight,
+                        w: this.videoWidth,
+                        h: this.videoHeight,
                         alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
                     }
                 )
@@ -119,7 +115,7 @@
  
             dataURLtoFile(dataURL, filename) {
                 let arr = dataURL.split(','),
-                    mime = arr[0].match(/:(.*?);/)[1],
+                    mime = arr[0].match(/:(.*?);/)[1], //jpg
                     bstr = atob(arr[1]),
                     n = bstr.length,
                     u8arr = new Uint8Array(n);
@@ -131,15 +127,12 @@
             },
         }
     }
+
 </script>
  
 <style scoped>
-    .camera-box {
-        border: 1px dashed #d6d6d6;
-        border-radius: 4px;
-        padding: 2px;
-        width: 80%;
-        min-height: 300px;
+    video, canvas {
+        position: absolute;
     }
  
 </style>
