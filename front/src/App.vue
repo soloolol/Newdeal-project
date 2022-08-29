@@ -36,8 +36,8 @@
       </div>
     </v-app-bar>
 
-    <v-main id="main">
-      <HelloWorld/>
+    <v-main id="main" style="display: flex; justify-content: center;">
+      <Camera/>
     </v-main>
     
     <v-bottom-navigation
@@ -117,12 +117,14 @@
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import Camera from './components/Camera';
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    Camera,
   },
 
   data () {
