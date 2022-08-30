@@ -17,33 +17,41 @@ const Weather = () =>{
 const Search = () =>{
   return import("../components/Search.vue")
 }
+const Login = () =>{
+  return import("../components/Login.vue")
+}
 
 const routes = [
-      {
-          path: '/',
-          name: 'home',
-          component: Home
-      },
-      {
-          path:'/rank',
-          name: 'rank',
-          component: Rank
-      },
-      {
-          path:'/map',
-          name: 'map',
-          component: Map
-      },
-      {
-          path:'/weather',
-          name: 'weather',
-          component: Weather
-      },
-      {
-          path:'/search',
-          name: 'search',
-          component: Search
-      },
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path:'/rank',
+      name: 'rank',
+      component: Rank
+    },
+    {
+      path:'/map',
+      name: 'map',
+      component: Map
+    },
+    {
+      path:'/weather',
+      name: 'weather',
+      component: Weather
+    },
+    {
+      path:'/search',
+      name: 'search',
+      component: Search
+    },
+    {
+      path:'/login',
+      name: 'login',
+      component: Login
+    },
   ]
 
 const router = new VueRouter({

@@ -28,6 +28,7 @@
         <v-btn
           icon
           value="account"
+          @click="$router.push({name:'login'})"
         >
           <v-icon top>
             mdi-account

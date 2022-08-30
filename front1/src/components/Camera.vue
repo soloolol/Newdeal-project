@@ -21,6 +21,7 @@
             <div v-if="isCameraOpen" class="camera-canvas" style="width:videoWidth; height:videoHeight; overflow: hidden;">
                 <canvas v-show="false" id="photoTaken" ref="canvas" :width="videoWidth" :height="videoHeight"></canvas>
                 <video ref="camera" :width="videoWidth" :height="videoHeight" style="width:videoWidth; height:videoHeight;" autoplay playsinline></video>
+                <img src="//:0" alt="" id="camera--output">
             </div>
             <vue-picture-swipe :items="items"></vue-picture-swipe>
         </div>
@@ -29,6 +30,7 @@
  
 <script>
     import VuePictureSwipe from 'vue-picture-swipe';
+    import { mapActions } from 'vuex';
  
     export default {
         name: "Camera",
@@ -42,6 +44,8 @@
             items: [], 
         }),
         methods: {
+            ...mapActions(['fishTmpAction']),
+
             toggleCamera() {
                 if (this.isCameraOpen) {
                     this.isCameraOpen = false;
@@ -80,7 +84,7 @@
                     context.drawImage(self.$refs.camera, 0, 0, self.videoWidth, self.videoHeight);
                     const dataUrl = self.$refs.canvas.toDataURL("image/jpeg")
                         .replace("image/jpeg", "image/octet-stream");
-                    self.addToPhotoGallery(dataUrl);
+                    //self.addToPhotoGallery(dataUrl);
                     self.uploadPhoto(dataUrl);
                     self.isCameraOpen = false;
                     self.stopCameraStream();
@@ -100,13 +104,15 @@
             },
             uploadPhoto(dataURL){
                 let uniquePictureName = this.generateCapturePhotoName();
-                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
+                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpeg')
                 let formData = new FormData()
-                formData.append('file', capturedPhotoFile)
+                formData.append('fish', capturedPhotoFile)
                 // Upload image api
-                // axios.post('http://your-url-upload', formData).then(response => {
-                //   console.log(response)
-                // })
+                // axios.post('http://your-url-upload', formData).then(resp => {
+                //   console.log("img > node 결과", resp)
+                //   fishTmpAction(resp.fish)
+                //   this.$router.push({name:'result'})
+                // }).catch(error => { alert("데이터 전송 실패")})
             },
  
             generateCapturePhotoName(){
@@ -115,15 +121,16 @@
  
             dataURLtoFile(dataURL, filename) {
                 let arr = dataURL.split(','),
-                    mime = arr[0].match(/:(.*?);/)[1], //jpg
-                    bstr = atob(arr[1]),
+                    mime = arr[0].match(/:(.*?);/)[1], //jpeg
+                    bstr = arr[1].toString('base64'), // base64 > 디코딩
                     n = bstr.length,
                     u8arr = new Uint8Array(n);
  
                 while (n--) {
                     u8arr[n] = bstr.charCodeAt(n);
                 }
-                return new File([u8arr], filename, {type: mime});
+                let blob = new Blob([u8arr],{type: mime})
+                return new File([blob], filename );
             },
         }
     }
