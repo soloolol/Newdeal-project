@@ -54,20 +54,19 @@
     data: () => ({
         show: false,
         userId: "",
-        boxedImg: "",
+        boxedImg: null,
         spc: "",
         cm: "",
     }),
-    methods: {
-    async getImage() {
-      return await 'https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg';
-    }   
+    methods: { 
     },
-    // raw binary data 로 이미지를 받았을 때
     created: async function() {
         const data = this.$store.state.fishTmp.resultImg;
-        const blob = new Blob([data])
-        this.data.boxedImg = URL.createObjectURL(blob)
+            // 이미지를 base64 str data 로 받았을때
+        this.data.boxedImg = 'data:image/jpeg;base64,' + data;
+            // raw binary data 로 이미지를 받았을 때
+        // const blob = new Blob([data])
+        // this.data.boxedImg = URL.createObjectURL(blob)
         this.data.spc = this.$store.state.fishTmp.spc;
         this.data.cm = this.$store.state.fishTmp.cm;
     }
