@@ -21,31 +21,42 @@
             <div v-if="isCameraOpen" class="camera-canvas" style="width:videoWidth; height:videoHeight; overflow: hidden;">
                 <canvas v-show="false" id="photoTaken" ref="canvas" :width="videoWidth" :height="videoHeight"></canvas>
                 <video ref="camera" :width="videoWidth" :height="videoHeight" style="width:videoWidth; height:videoHeight;" autoplay playsinline></video>
-                <img src="//:0" alt="" id="camera--output">
             </div>
-            <vue-picture-swipe :items="items"></vue-picture-swipe>
+
+            <img v-if="check == true" v-bind:src="'data:image/jpg;base64,'+items" >
+            <div> {{fishName}}</div>
+            <div> {{fishLength}}</div>
         </div>
     </v-container>
 </template>
  
 <script>
+    //<vue-picture-swipe :items="items"></vue-picture-swipe>
     import VuePictureSwipe from 'vue-picture-swipe';
-    import { mapActions } from 'vuex';
+    import axios from 'axios'
+    import { Buffer } from 'buffer';
+    //import fs from 'fs'
  
     export default {
         name: "Camera",
         components: {
             VuePictureSwipe
         },
+        props:['img'],
         data: ()=> ({
             isCameraOpen: false,
             videoHeight:640,
             videoWidth:320,
-            items: [], 
+            //items: [], 
+            items : '',
+            fishName : '',
+            fishLength : '',
+            check : true
         }),
+        // mounted(){
+        //     this.items = fs.readFileSync("./image.jpg", "base64")
+        // },
         methods: {
-            ...mapActions(['fishTmpAction']),
-
             toggleCamera() {
                 if (this.isCameraOpen) {
                     this.isCameraOpen = false;
@@ -102,17 +113,41 @@
                     }
                 )
             },
-            uploadPhoto(dataURL){
+
+            async uploadPhoto(dataURL){
                 let uniquePictureName = this.generateCapturePhotoName();
-                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpeg')
+                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpg')
                 let formData = new FormData()
+
+                //촬영한 물고기 이미지 파일
                 formData.append('fish', capturedPhotoFile)
-                // Upload image api
-                // axios.post('http://your-url-upload', formData).then(resp => {
-                //   console.log("img > node 결과", resp)
-                //   fishTmpAction(resp.fish)
-                //   this.$router.push({name:'result'})
-                // }).catch(error => { alert("데이터 전송 실패")})
+
+                //잡은 물고기 location(위도, 경도)
+                formData.append('latitude', 35.054700)
+                formData.append('longitude', 126.457823)
+
+                let data
+                data = await axios.post('http://localhost:3000/matchFish/caculateData', formData, {
+                    headers:{
+                        'Content-Type' : 'multipart/form-data',
+                    },
+                })
+                .then(function(response){
+                
+                    return response.data
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+
+                //판별한 물고기 정보
+                this.fishName = data.fishType
+                this.fishLength = data.fishLength
+
+                //base64로 인코딩된 이미지데이터
+                this.items = data.imageData
+
+                this.check = true
             },
  
             generateCapturePhotoName(){
@@ -121,16 +156,15 @@
  
             dataURLtoFile(dataURL, filename) {
                 let arr = dataURL.split(','),
-                    mime = arr[0].match(/:(.*?);/)[1], //jpeg
-                    bstr = arr[1].toString('base64'), // base64 > 디코딩
+                    mime = arr[0].match(/:(.*?);/)[1], //jpg
+                    bstr = atob(arr[1]),
                     n = bstr.length,
                     u8arr = new Uint8Array(n);
  
                 while (n--) {
                     u8arr[n] = bstr.charCodeAt(n);
                 }
-                let blob = new Blob([u8arr],{type: mime})
-                return new File([blob], filename );
+                return new File([u8arr], filename, {type: mime});
             },
         }
     }
