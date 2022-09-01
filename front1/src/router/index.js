@@ -20,6 +20,9 @@ const Search = () =>{
 const Login = () =>{
   return import("../components/Login.vue")
 }
+const Result = () =>{
+  return import("../components/Result.vue")
+}
 
 const routes = [
     {
@@ -51,6 +54,11 @@ const routes = [
       path:'/login',
       name: 'login',
       component: Login
+    },
+    {
+      path:'/result',
+      name: 'result',
+      component: Result
     },
   ]
 

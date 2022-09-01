@@ -107,12 +107,14 @@
                 let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpeg')
                 let formData = new FormData()
                 formData.append('fish', capturedPhotoFile)
-                // Upload image api
-                // axios.post('http://your-url-upload', formData).then(resp => {
-                //   console.log("img > node 결과", resp)
-                //   fishTmpAction(resp.fish)
-                //   this.$router.push({name:'result'})
-                // }).catch(error => { alert("데이터 전송 실패")})
+                //Upload image api
+                this.axios.post('http://localhost:3000', formData).then(resp => {
+                  console.log("img > node 결과", resp)
+                  fishTmpAction(resp.fish)
+                  this.$router.push({name:'result'})
+                }).catch(error => {
+                    console.log(error) 
+                    alert("데이터 전송 실패")})
             },
  
             generateCapturePhotoName(){
