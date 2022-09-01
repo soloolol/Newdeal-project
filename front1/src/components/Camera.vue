@@ -122,6 +122,7 @@
                 //촬영한 물고기 이미지 파일
                 formData.append('fish', capturedPhotoFile)
 
+
                 //잡은 물고기 location(위도, 경도)
                 formData.append('latitude', 35.054700)
                 formData.append('longitude', 126.457823)
@@ -148,6 +149,7 @@
                 this.items = data.imageData
 
                 this.check = true
+
             },
  
             generateCapturePhotoName(){
