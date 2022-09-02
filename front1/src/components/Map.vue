@@ -1,20 +1,18 @@
 <template>
-  <div>
     <v-container>
         <v-card>
             <v-card-title>
                 Title
             </v-card-title>
+            <div id="map" @click="mapClick()" style="width:100%;height:600px;"></div>
+            <div class="button">
+              <v-btn @click="setMarker()">setMarker</v-btn>
+            </div>
         </v-card>
     </v-container>
-    <div id="map" @click="mapClick()" style="width:500px;height:400px;"></div>
-    <div class="button">
-      <button @click="setMarker()">setMarker</button>
-    </div>
-  </div>
+
 </template>
 <script>
-  import axios from 'axios'
 
   export default {
     name: 'Map',
@@ -74,7 +72,7 @@
         let getData
 
         //서버로부터 데이터 가져오기
-        await axios.post('https://nunukang.shop/map/center', centerData)
+        await this.axios.post('https://nunukang.shop/map/center', centerData)
         .then(function(response){
           getData = response.data
         })
