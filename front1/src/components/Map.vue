@@ -2,11 +2,11 @@
     <v-container>
         <v-card>
             <v-card-title>
-                Title
+                낚시 포인트 갤러리
             </v-card-title>
             <div id="map" @click="mapClick" style="width:100%;height:600px;"></div>
             <div class="button">
-              <v-btn @click="setMarker">setMarker</v-btn>
+              <v-btn @click="setMarker">이 위치에서 잡은 물고기 보기</v-btn>
             </div>
         </v-card>
     </v-container>
@@ -47,7 +47,7 @@
         const container = document.getElementById("map")
         const options = {
           center : new kakao.maps.LatLng(33.450701, 126.570667),
-          level : 17,
+          level : 8,
         }
 
         this.map = new kakao.maps.Map(container, options)
