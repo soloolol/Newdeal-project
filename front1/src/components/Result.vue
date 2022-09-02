@@ -48,27 +48,38 @@
   </v-container>
 </template>
 <script>
+import { th } from 'vuetify/lib/locale';
+
   export default {
     name: 'Result',
 
-    data: () => ({
-        show: false,
-        userId: "",
-        boxedImg: null,
-        spc: "",
-        cm: "",
-    }),
+    data() {
+        return {
+            show: false,
+            userId: "",
+            boxedImg: "",
+            spc: "",
+            cm: ""
+        };
+    },
     methods: { 
     },
-    created: async function() {
-        const data = this.$store.state.fishTmp.resultImg;
-            // 이미지를 base64 str data 로 받았을때
-        this.data.boxedImg = 'data:image/jpeg;base64,' + data;
-            // raw binary data 로 이미지를 받았을 때
-        // const blob = new Blob([data])
-        // this.data.boxedImg = URL.createObjectURL(blob)
-        this.data.spc = this.$store.state.fishTmp.spc;
-        this.data.cm = this.$store.state.fishTmp.cm;
+    mounted(){
+        console.log(this.$store.state.fishTmp.fishType)
+        this.boxedImg = 'data:image/jpeg;base64,'+this.$store.state.fishTmp.imageData
+        this.spc = this.$store.state.fishTmp.fishType
+        this.cm = this.$store.state.fishTmp.fishLength
     }
+    // created: async function() {
+    //     //응답값 {data:{fishType:"",fishLength:"",imageData:""}}
+    //     const imgdata = this.$store.state.fishTmp.imageData;
+    //         // 이미지를 base64 str data 로 받았을때
+    //     const img = 'data:image/jpeg;base64,' + imgdata;
+    //         // raw binary data 로 이미지를 받았을 때
+    //     // const blob = new Blob([data])
+    //     // const Img = URL.createObjectURL(blob)
+    //     const spc = this.$store.state.fishTmp.fishType;
+    //     const cm = this.$store.state.fishTmp.fishLength;
+    // }
   }
 </script>

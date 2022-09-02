@@ -77,13 +77,13 @@
             },
  
             capture() {
-                const FLASH_TIMEOUT = 50;
+                const FLASH_TIMEOUT = 100;
                 let self = this;
                 setTimeout(() => {
                     const context = self.$refs.canvas.getContext('2d');
                     context.drawImage(self.$refs.camera, 0, 0, self.videoWidth, self.videoHeight);
-                    const dataUrl = self.$refs.canvas.toDataURL("image/jpg")
-                        .replace("image/jpg", "image/octet-stream");
+                    const dataUrl = self.$refs.canvas.toDataURL("image/png")
+                        //.replace("image/jpg", "image/octet-stream");
                     //self.addToPhotoGallery(dataUrl);
                     self.uploadPhoto(dataUrl);
                     self.isCameraOpen = false;
@@ -104,10 +104,11 @@
             },
             async uploadPhoto(dataURL){
                 let uniquePictureName = this.generateCapturePhotoName();
-                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.jpeg')
+                let capturedPhotoFile = this.dataURLtoFile(dataURL, uniquePictureName+'.png')
                 let formData = new FormData()
 
                 //촬영한 물고기 이미지 파일
+                console.log('이미지', capturedPhotoFile)
                 formData.append('fish', capturedPhotoFile)
 
                 //잡은 물고기 location(위도, 경도)
@@ -120,7 +121,8 @@
                             'Content-Type' : 'multipart/form-data',
                         }
                     }).then(resp => {
-                        console.log("성공적", resp)
+                        console.log('성공적 키:', Object.keys(resp.data))
+                        //console.log("성공적", resp)
                         //data를 store.state.fishTmp에 저장
                         this.fishTmpAction(resp.data)
                         //응답값 {data:{fishType:"",fishLength:"",imageData:""}}
@@ -140,8 +142,8 @@
  
             dataURLtoFile(dataURL, filename) {
                 let arr = dataURL.split(','),
-                    mime = arr[0].match(/:(.*?);/)[1], //jpg
-                    bstr = arr[1].toString('base64'), // base64 > 디코딩
+                    mime = arr[0].match(/:(.*?);/)[1], //png
+                    bstr = atob(arr[1])
                     n = bstr.length,
                     u8arr = new Uint8Array(n);
  
@@ -149,7 +151,7 @@
                     u8arr[n] = bstr.charCodeAt(n);
                 }
                 let blob = new Blob([u8arr],{type: mime})
-                return new File([blob], filename );
+                return new File([blob], filename);
             },
         }
     }
