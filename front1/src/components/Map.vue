@@ -4,9 +4,9 @@
             <v-card-title>
                 Title
             </v-card-title>
-            <div id="map" @click="mapClick()" style="width:100%;height:600px;"></div>
+            <div id="map" @click="mapClick" style="width:100%;height:600px;"></div>
             <div class="button">
-              <v-btn @click="setMarker()">setMarker</v-btn>
+              <v-btn @click="setMarker">setMarker</v-btn>
             </div>
         </v-card>
     </v-container>
@@ -17,12 +17,13 @@
   export default {
     name: 'Map',
 
-    data: () => ({
+    data() {
+      return{
       centerMarker : null,
       map : null,
       markers : [],
       customOverlay : [],
-    }),
+    }},
 
     mounted(){
       //mounted시 카카오 지도 초기화
@@ -46,7 +47,7 @@
         const container = document.getElementById("map")
         const options = {
           center : new kakao.maps.LatLng(33.450701, 126.570667),
-          level : 13,
+          level : 17,
         }
 
         this.map = new kakao.maps.Map(container, options)

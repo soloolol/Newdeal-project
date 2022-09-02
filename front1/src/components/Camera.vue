@@ -37,12 +37,14 @@
         components: {
             VuePictureSwipe
         },
-        data: ()=> ({
-            isCameraOpen: false,
-            videoHeight:640,
-            videoWidth:320,
-            items: [], 
-        }),
+        data() {
+            return {
+                isCameraOpen: false,
+                videoHeight:640,
+                videoWidth:320,
+                items: [], 
+            }
+        },
         methods: {
             ...mapActions(['fishTmpAction']),
 

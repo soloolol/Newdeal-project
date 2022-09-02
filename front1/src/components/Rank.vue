@@ -1,25 +1,24 @@
 <template>
-  <div>
-    <v-container>
+  <v-container>
         <v-card>
             <v-card-title>
                 Title
             </v-card-title>
+            <v-li v-for="list in rankList" :key="list.rank">{{list}}</v-li>
+            <v-btn @click="getRankData">랭킹가져오기</v-btn> 
         </v-card>
     </v-container>
-    <li v-for="list in rankList" v-bind:key="list.rank">{{list}}</li>
-    <button @click="getRankData()">랭킹가져오기</button>
-  </div>
 </template>
 <script>
-  import axios from 'axios'
 
   export default {
     name: 'Rank',
 
-    data: () => ({
-      rankList : []
-    }),
+    data(){
+      return{
+        rankList : []      
+      }
+    },
 
     mounted(){
       
@@ -28,9 +27,8 @@
 
     methods:{
       async getRankData(){
-
         let data
-        data = await axios.post("http://localhost:3000/rank/fish")
+        data = await this.axios.post("https://nunukang.shop/rank/fish")
         .then(function(response){
           return response.data
         })
