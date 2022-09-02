@@ -31,6 +31,7 @@
 <script>
     import VuePictureSwipe from 'vue-picture-swipe';
     import { mapActions } from 'vuex';
+    import axios from 'axios'
  
     export default {
         name: "Camera",
@@ -115,7 +116,7 @@
                 formData.append('longitude', 126.457823)
 
                 //Upload image api
-                await this.axios.post('http://localhost:3000/matchFish/caculateData', formData, {
+                    await axios.post('http://localhost:3000/matchFish/caculateData', formData, {
                         headers:{
                             'Content-Type' : 'multipart/form-data',
                         }
@@ -124,7 +125,6 @@
                         //data를 store.state.fishTmp에 저장
                         this.fishTmpAction(resp.data)
                         //응답값 {data:{fishType:"",fishLength:"",imageData:""}}
-
                         //페이지전환
                         this.$router.push({name:'result'})
                     }).catch(error => {
@@ -141,7 +141,8 @@
             dataURLtoFile(dataURL, filename) {
                 let arr = dataURL.split(','),
                     mime = arr[0].match(/:(.*?);/)[1], //jpg
-                    bstr = arr[1].toString('base64'), // base64 > 디코딩
+                    //bstr = arr[1].toString('base64'), // base64 > 디코딩
+                    bstr = atob(arr[1]),
                     n = bstr.length,
                     u8arr = new Uint8Array(n);
  
