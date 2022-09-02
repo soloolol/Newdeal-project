@@ -14,7 +14,7 @@
         </v-card-title>
 
         <v-card-title>
-        길이 : {{cm}} Cm
+        길이 : {{cm}}
         </v-card-title>
 
         <v-card-actions>
@@ -60,15 +60,18 @@
     }),
     methods: { 
     },
-    created: async function() {
-        const data = this.$store.state.fishTmp.resultImg;
+    mounted() {
+        //const data = this.$store.state.fishTmp.resultImg;
+        let data = this.$store.getters.getData
             // 이미지를 base64 str data 로 받았을때
-        this.data.boxedImg = 'data:image/jpeg;base64,' + data;
+        this.boxedImg = 'data:image/jpeg;base64,' + data.imageData;
             // raw binary data 로 이미지를 받았을 때
         // const blob = new Blob([data])
         // this.data.boxedImg = URL.createObjectURL(blob)
-        this.data.spc = this.$store.state.fishTmp.spc;
-        this.data.cm = this.$store.state.fishTmp.cm;
+        //this.spc = this.$store.state.fishTmp.spc;
+        //this.cm = this.$store.state.fishTmp.cm;
+        this.spc = data.fishType
+        this.cm = data.fishLength
     }
   }
 </script>
