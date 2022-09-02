@@ -74,7 +74,7 @@
         let getData
 
         //서버로부터 데이터 가져오기
-        await axios.post('http://localhost:3000/map/center', centerData)
+        await axios.post('https://nunukang.shop/map/center', centerData)
         .then(function(response){
           getData = response.data
         })
