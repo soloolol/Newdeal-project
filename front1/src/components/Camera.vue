@@ -142,7 +142,7 @@
             dataURLtoFile(dataURL, filename) {
                 let arr = dataURL.split(','),
                     mime = arr[0].match(/:(.*?);/)[1], //png
-                    bstr = atob(arr[1])
+                    bstr = atob(arr[1]),
                     n = bstr.length,
                     u8arr = new Uint8Array(n);
  
