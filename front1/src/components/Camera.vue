@@ -116,7 +116,7 @@
                 formData.append('longitude', 126.457823)
 
                 //Upload image api
-                    await this.$axios.post('https://nunukang.shop/matchFish/caculateData', formData, {
+                    await this.axios.post('https://nunukang.shop/matchFish/caculateData', formData, {
                         headers:{
                             'Content-Type' : 'multipart/form-data',
                         }
