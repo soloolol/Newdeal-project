@@ -1,8 +1,9 @@
 <template>
   <v-container>
-    <v-card
-        class="mx-auto"
-        max-width="344"
+    <v-card       
+      light
+      class="mx-auto pa-2"
+      max-width="400"
     >
         <v-img
         :src="boxedImg"

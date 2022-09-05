@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-card
-      class="mx-auto"
+      light
+      class="mx-auto pa-2"
       max-width="400"
     >
       <v-card-title>

@@ -1,30 +1,36 @@
 
 <template>
     <v-container>
-        <div class="camera-box" style="display: flex; flex-direction: column; justify-content: center;">
-            <div style="display: flex; justify-content: center;">
-                <img style="height: 25px;" v-if="isCameraOpen"
-                    src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
-                    class="button-img camera-shoot" @click="capture"/>
-                <div class="camera-button">
-                    <button type="button" class="button is-rounded cam-button"
-                            style="background-color: white; border: 0px;"
-                            @click="toggleCamera"
-                    >
-                        <span v-if="!isCameraOpen"><img style="height: 25px;" class="button-img"
-                                            src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"></span>
-                        <span v-else><img style="height: 25px;" class="button-img"
-                                        src="https://img.icons8.com/material-outlined/50/000000/cancel.png"></span>
-                    </button>
+        <v-card       
+        light
+        class="mx-auto pa-2"
+        max-width="400"
+        >
+            <div class="camera-box" style="display: flex; flex-direction: column; justify-content: center;">
+                <div style="display: flex; justify-content: center;">
+                    <img style="height: 25px;" v-if="isCameraOpen"
+                        src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
+                        class="button-img camera-shoot" @click="capture"/>
+                    <div class="camera-button">
+                        <button type="button" class="button is-rounded cam-button"
+                                style="background-color: white; border: 0px;"
+                                @click="toggleCamera"
+                        >
+                            <span v-if="!isCameraOpen"><img style="height: 25px;" class="button-img"
+                                                src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"></span>
+                            <span v-else><img style="height: 25px;" class="button-img"
+                                            src="https://img.icons8.com/material-outlined/50/000000/cancel.png"></span>
+                        </button>
+                    </div>
                 </div>
+                <div v-if="isCameraOpen" class="camera-canvas" style="width:videoWidth; height:videoHeight; overflow: hidden;">
+                    <canvas v-show="false" id="photoTaken" ref="canvas" :width="videoWidth" :height="videoHeight"></canvas>
+                    <video ref="camera" :width="videoWidth" :height="videoHeight" style="width:videoWidth; height:videoHeight;" autoplay playsinline></video>
+                    <img src="//:0" alt="" id="camera--output">
+                </div>
+                <vue-picture-swipe :items="items"></vue-picture-swipe>
             </div>
-            <div v-if="isCameraOpen" class="camera-canvas" style="width:videoWidth; height:videoHeight; overflow: hidden;">
-                <canvas v-show="false" id="photoTaken" ref="canvas" :width="videoWidth" :height="videoHeight"></canvas>
-                <video ref="camera" :width="videoWidth" :height="videoHeight" style="width:videoWidth; height:videoHeight;" autoplay playsinline></video>
-                <img src="//:0" alt="" id="camera--output">
-            </div>
-            <vue-picture-swipe :items="items"></vue-picture-swipe>
-        </div>
+        </v-card>
     </v-container>
 </template>
  
@@ -44,6 +50,9 @@
                 videoWidth:320,
                 items: [], 
             }
+        },
+        created(){
+
         },
         methods: {
             ...mapActions(['fishTmpAction']),

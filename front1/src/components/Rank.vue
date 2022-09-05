@@ -1,12 +1,30 @@
 <template>
   <v-container>
-        <v-card>
-            <v-card-title>
-                Title
-            </v-card-title>
-            <v-li v-for="list in rankList" :key="list.rank">{{list}}</v-li>
-            <v-btn @click="getRankData">랭킹가져오기</v-btn> 
-        </v-card>
+    <v-card       
+      light
+      class="mx-auto pa-2"
+      max-width="400"
+    >
+      <v-card-title>
+        어종 별 랭킹보기
+      </v-card-title>
+      <!-- 셀렉트박스 -->
+      <v-row align="center">
+        <v-col
+          class="d-flex"
+          cols="12"
+          sm="6"
+        >
+          <v-select
+            :items="items"
+            v-model="selected"
+            label="select !"
+            @change="getRankData"
+          ></v-select>
+        </v-col>
+      </v-row>
+      <v-li v-for="list in rankList" :key="list.rank">{{list}}</v-li>
+    </v-card>
     </v-container>
 </template>
 <script>
@@ -16,27 +34,33 @@
 
     data(){
       return{
-        rankList : []      
+        items: ['참돔','돌돔','감성돔','조피볼락','넙치'],
+        selected: "참돔",
+        rankList: [],
       }
     },
-
-    mounted(){
-      
-
+    // 마운트 할때 default selected data = "참돔" 불러오기
+    async mounted(){
+      await this.axios.post("https://nunukang.shop/rank/fish",this.selected)
+        .then(resp => {
+          this.rankList=resp.data.rankList
+        })
+        .catch(err => {
+          if(err) throw err
+        })
     },
 
     methods:{
       async getRankData(){
-        let data
-        data = await this.axios.post("https://nunukang.shop/rank/fish")
-        .then(function(response){
-          return response.data
+        await this.axios.post("https://nunukang.shop/rank/fish",this.selected)
+        .then(resp => {
+          this.rankList = resp.data.rankList
         })
-        .catch(function(error){
-          if(error) throw error
+        .catch(err => {
+          if(err) throw err
         })
-        this.rankList = data
       }
-    }
+    },
+
   }
 </script>

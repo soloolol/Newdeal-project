@@ -42,6 +42,7 @@
     </v-main>
     
     <v-bottom-navigation
+      light
       app
       style="background:#FFFFFF; border-radius: 5px, 5px, 0, 0;"
     >
