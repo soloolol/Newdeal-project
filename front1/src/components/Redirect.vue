@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 const kakaoHeader = {
     'Authorization': '0dc9bea1c513adefb9eb0ff3cacde6ea', //Admin key
@@ -27,7 +28,7 @@ const kakaoHeader = {
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
             .join('&');
 
-        const result = await this.axios.post('https://kauth.kakao.com/oauth/token', queryString, { headers: kakaoHeader });
+        const result = await axios.post('https://kauth.kakao.com/oauth/token', queryString, { headers: kakaoHeader });
         console.log('카카오 토큰', result);
         
         getKakaoUserInfo(result.data.access_token)
