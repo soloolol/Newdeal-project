@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -24,7 +25,7 @@ export default new Vuex.Store({
       commit('fishToState', payload)
     },
     userGetAction: function ({commit}, payload) {
-      this.axios.post("https://nunutest.shop/user", payload)
+      axios.post("https://nunutest.shop/user", payload)
       .then( res => {
         console.log(res.data); //displayName : 닉네임
         commit('userToState',res.data);

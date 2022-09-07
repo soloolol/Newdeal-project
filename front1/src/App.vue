@@ -24,7 +24,6 @@
         </h2>
       </div>
       <v-spacer></v-spacer>
-      <h6 v-if="userId">{{ userId }}</h6>
       <div>
         <v-btn
           icon
@@ -39,6 +38,7 @@
     </v-app-bar>
 
     <v-main id="main" style="display: flex; justify-content: center;">
+      <h6>{{ userId }}</h6>
       <router-view/>
     </v-main>
     
