@@ -36,7 +36,7 @@ const kakaoHeader = {
 
     } catch (e) {
       console.log(e)
-        this.$router.push({name:'redirect'});
+        // this.$router.push({name:'redirect'});
     }
   };
 
