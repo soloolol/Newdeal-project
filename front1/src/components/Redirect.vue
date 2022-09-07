@@ -70,11 +70,11 @@ const kakaoHeader = {
     },
 
     created(){
-    //   if(this.$route.query.code){
-    //       console.log(this.$route.query.code)
-    //       const data = getKakaoToken(this.$route.query.code)
-    //       this.$store.dispatch("userGetAction", data)
-    //     }
+      if(this.$route.query.code){
+          console.log(this.$route.query.code)
+          const data = getKakaoToken(this.$route.query.code)
+          this.$store.dispatch("userGetAction", data)
+        }
     }
   };
 </script>
