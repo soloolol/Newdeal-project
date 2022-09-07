@@ -27,7 +27,7 @@ const kakaoHeader = {
         const queryString = Object.keys(data)
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
             .join('&');
-
+        console.log(queryString)
         const result = await axios.post('https://kauth.kakao.com/oauth/token?', queryString, { headers: kakaoHeader });
         console.log('카카오 토큰', result);
         
