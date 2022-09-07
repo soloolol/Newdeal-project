@@ -46,7 +46,7 @@
 
         loginWithKakao() {
             const params = {
-                redirectUri: "https://nunutest.shop", //redirect_url은 동일하게
+                redirectUri: "https://nunutest.shop/redirect", //redirect_url은 동일하게
             };
             window.Kakao.Auth.authorize(params);
         },
