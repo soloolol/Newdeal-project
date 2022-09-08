@@ -24,9 +24,9 @@ export default new Vuex.Store({
     fishTmpAction: function ({commit}, payload) {
       commit('fishToState', payload)
     },
-    userGetAction: function ({commit}, payload) {
+    userGetAction: async function ({commit}, payload) {
       console.log('여기는 스토어 actions 시작점')
-      axios.post("https://nunukang.shop/user", payload)
+      await axios.post("https://nunukang.shop/user", payload)
       .then( res => {
         console.log(res.data); //displayName : 닉네임
         commit('userToState',res.data);
