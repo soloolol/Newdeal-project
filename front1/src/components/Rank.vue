@@ -19,7 +19,7 @@
             :items="items"
             v-model="selected"
             label="select !"
-            @change="getRankData"
+            @change="getRankData()"
           ></v-select>
         </v-col>
       </v-row>
@@ -41,8 +41,10 @@
     },
     // 마운트 할때 default selected data = "참돔" 불러오기
     async mounted(){
-      //await this.axios.post('http://localhost:3000/rank/fish',this.selected)
-      await this.axios.post("https://nunukang.shop/rank/fish",this.selected)
+      let sendData = {fishType : this.selected}
+
+      await this.axios.post('http://localhost:3000/rank/fish',sendData)
+      //await this.axios.post("https://nunukang.shop/rank/fish",sendData)
         .then(resp => {
           this.rankList=resp.data
         })
@@ -53,8 +55,10 @@
 
     methods:{
       async getRankData(){
-        //await this.axios.post('http://localhost:3000/rank/fish',this.selected)
-        await this.axios.post("https://nunukang.shop/rank/fish",this.selected)
+        let sendData = {fishType : this.selected}
+
+        await this.axios.post('http://localhost:3000/rank/fish',sendData)
+        //await this.axios.post("https://nunukang.shop/rank/fish",sendData)
         .then(resp => {
           this.rankList = resp.data
         })
