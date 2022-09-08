@@ -30,9 +30,9 @@ const kakaoHeader = {
         const result = await axios.post('https://kauth.kakao.com/oauth/token', queryString, { headers: kakaoHeader });
         console.log('카카오 토큰', result);
         
-        getKakaoUserInfo(result.data.access_token)
+        const userData = await getKakaoUserInfo(result.data.access_token)
 
-        return result;
+        return userData;
 
     } catch (e) {
       console.log(e)
