@@ -9,8 +9,9 @@
 <script>
 import axios from 'axios'
 
+const Admin_key = '0dc9bea1c513adefb9eb0ff3cacde6ea'
 const kakaoHeader = {
-    'Authorization': '0dc9bea1c513adefb9eb0ff3cacde6ea', //Admin key
+    // 'Authorization' : `KakaoAK ${Admin_key}`, //Admin key
     'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
   };
 
@@ -25,10 +26,10 @@ const kakaoHeader = {
         };
 
         const queryString = Object.keys(data)
-            .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+            .map(k => k + '=' + data[k])
             .join('&');
         console.log(queryString)
-        const result = await axios.post('https://kauth.kakao.com/oauth/token?', queryString, { headers: kakaoHeader });
+        const result = await axios.post('https://kauth.kakao.com/oauth/token', queryString, { headers: kakaoHeader });
         console.log('카카오 토큰', result);
         
         getKakaoUserInfo(result.data.access_token)
