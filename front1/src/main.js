@@ -8,7 +8,9 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
+Vue.prototype.router = router
 Vue.prototype.store = store
+
 
 window.Kakao.init('fae1a098029cf35226952ad2c245221a');
 
