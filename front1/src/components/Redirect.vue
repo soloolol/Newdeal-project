@@ -71,7 +71,7 @@ const kakaoHeader = {
 
     async created(){
       if(this.$route.query.code){
-        data = await getKakaoToken(this.$route.query.code)
+        const data = await getKakaoToken(this.$route.query.code)
         await this.$store.dispatch("userGetAction", data);
         this.$router.push({name:'home'})
         }
