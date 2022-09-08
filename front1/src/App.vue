@@ -36,7 +36,7 @@
         </v-btn>
       </div>
     </v-app-bar>
-
+    
     <v-main id="main" style="display: flex; justify-content: center;">
       <router-view/>
     </v-main>
@@ -110,37 +110,41 @@
       class="mb-2"
       @click="$router.push({name:'home'})"
     >
-      <div class="home-btn">
+      <!-- <div class="home-btn"> -->
       <img
         :src="require('./assets/small_logo.png')"
         contain
         class="shrink"
         style="height:35px;transform: rotate(25deg);"
       />
-      </div>
     </v-btn>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-import Camera from './components/Camera';
 
-export default {
-  name: 'App',
+  export default {
+    name: 'App',
 
-  components: {
-    HelloWorld,
-    Camera,
-  },
+    components: {
 
-  data () {
-    return {
-      value: 1,
-      active: true,
+    },
+
+    data () {
+      return {
+        value: 1,
+        active: true,
+        userId: '',
+      }
+    },
+
+    created(){
+
+    },
+    mounted(){
+      this.userId = this.$store.state.userId
     }
-  },
-};
+  };
 </script>
 
 <style scoped>

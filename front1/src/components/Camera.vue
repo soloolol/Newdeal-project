@@ -6,78 +6,76 @@
         class="mx-auto pa-2"
         max-width="400"
         >
-            <div class="camera-box" style="display: flex; flex-direction: column; justify-content: center;">
-                <div style="display: flex; justify-content: center;">
-                    <img style="height: 25px;" v-if="isCameraOpen"
-                        src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"
-                        class="button-img camera-shoot" @click="capture"/>
-                    <div class="camera-button">
-                        <button type="button" class="button is-rounded cam-button"
-                                style="background-color: white; border: 0px;"
-                                @click="toggleCamera"
-                        >
-                            <span v-if="!isCameraOpen"><img style="height: 25px;" class="button-img"
-                                                src="https://img.icons8.com/material-outlined/50/000000/camera--v2.png"></span>
-                            <span v-else><img style="height: 25px;" class="button-img"
-                                            src="https://img.icons8.com/material-outlined/50/000000/cancel.png"></span>
-                        </button>
-                    </div>
-                </div>
-                <div v-if="isCameraOpen" class="camera-canvas" style="width:videoWidth; height:videoHeight; overflow: hidden;">
-                    <canvas v-show="false" id="photoTaken" ref="canvas" :width="videoWidth" :height="videoHeight"></canvas>
-                    <video ref="camera" :width="videoWidth" :height="videoHeight" style="width:videoWidth; height:videoHeight;" autoplay playsinline></video>
-                    <img src="//:0" alt="" id="camera--output">
-                </div>
-                <vue-picture-swipe :items="items"></vue-picture-swipe>
+            <v-card-title>{{ this.$store.state.userInfo }}</v-card-title>
+
+            <div id="camera">
+                <!-- <button id="flip-button">카메라전환</button> -->
+
+                <canvas id="camera--sensor" ref="canvas"></canvas>
+
+                <video id="camera--view" ref="camera" autoplay playsinline></video>
+
+                <img src="//:0" alt="" ref="output" id="camera--output">
+
             </div>
+
         </v-card>
+        <v-btn 
+            outlined
+            fab
+            style="background-color: #FFFFFF;overflow:hidden;z-index:100; position:fixed;left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);"
+            x-large
+            color="blue"
+            class="mb-2"
+            @click="capture"
+        >
+            <!-- <div class="home-btn"> -->
+            <img
+                :src="require('../assets/small_logo.png')"
+                contain
+                class="shrink"
+                style="height:35px;transform: rotate(25deg);"
+            />
+        </v-btn>
     </v-container>
 </template>
  
 <script>
-    import VuePictureSwipe from 'vue-picture-swipe';
+
     import { mapActions } from 'vuex';
  
     export default {
         name: "Camera",
         components: {
-            VuePictureSwipe
+
         },
         data() {
             return {
                 isCameraOpen: false,
-                videoHeight:640,
-                videoWidth:320,
+                vHeight:640,
+                vWidth:320,
                 items: [], 
             }
         },
         created(){
 
         },
+        mounted(){
+            this.cameraStart()
+        },
         methods: {
             ...mapActions(['fishTmpAction']),
 
-            toggleCamera() {
-                if (this.isCameraOpen) {
-                    this.isCameraOpen = false;
-                    this.stopCameraStream();
-                } else {
-                    this.isCameraOpen = true;
-                    this.startCameraStream();
-                }
-            },
-            startCameraStream() {
-                const constraints = (window.constraints = {
-                    audio: false,
-                    video: true,
-                });
-                navigator.mediaDevices
-                    .getUserMedia(constraints)
+            cameraStart(){
+                const front = false;
+                const constraints = { video: { width: 640, height: 0, facingMode: (front? "user" : "environment") } };
+                navigator.mediaDevices.getUserMedia(constraints)
                     .then(stream => {
                         this.$refs.camera.srcObject = stream;
-                    }).catch(error => {
-                    alert("Browser doesn't support or there is some errors." + error);
-                });
+                    })
+                    .catch(error => {
+                        console.error("카메라에 문제가 있습니다.", error);
+                    })
             },
  
             stopCameraStream() {
@@ -91,27 +89,20 @@
                 const FLASH_TIMEOUT = 100;
                 let self = this;
                 setTimeout(() => {
+                    self.$refs.canvas.width = self.$refs.camera.videoWidth
+                    self.$refs.canvas.height = self.$refs.camera.videoHeight
+                    console.log(self.$refs.canvas.width,self.$refs.camera.videoWidth)
+  
                     const context = self.$refs.canvas.getContext('2d');
-                    context.drawImage(self.$refs.camera, 0, 0, self.videoWidth, self.videoHeight);
+                    
+                    context.drawImage(self.$refs.camera, 0, 0);
                     const dataUrl = self.$refs.canvas.toDataURL("image/png")
                         //.replace("image/jpg", "image/octet-stream");
                     //self.addToPhotoGallery(dataUrl);
                     self.uploadPhoto(dataUrl);
-                    self.isCameraOpen = false;
                     self.stopCameraStream();
+                    self.$refs.output.src = dataUrl
                 }, FLASH_TIMEOUT);
-            },
- 
-            addToPhotoGallery(dataURI) {
-                this.items.push(
-                    {
-                        src: dataURI,
-                        thumbnail: dataURI,
-                        w: this.videoWidth,
-                        h: this.videoHeight,
-                        alt: 'some numbers on a grey background' // optional alt attribute for thumbnail image
-                    }
-                )
             },
             async uploadPhoto(dataURL){
                 let uniquePictureName = this.generateCapturePhotoName();
@@ -170,8 +161,24 @@
 </script>
  
 <style scoped>
-    video, canvas {
+    #camera{
+        position: relative;
+        width: 340px;
+        height: 80vh;
+        margin: auto;
+        overflow: hidden;
+    }
+    #camera--view, #camera--sensor, #camera--output{
         position: absolute;
+        width: 340px;
+        height: 80vh;
+        margin: auto;
+        object-fit: cover;
+    }
+
+    #camera--view, #camera--sensor, #camera--output{
+        /*transform: scaleX(-1);*/
+        filter: FlipH;
     }
  
 </style>

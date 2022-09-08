@@ -23,6 +23,9 @@ const Login = () =>{
 const Result = () =>{
   return import("../components/Result.vue")
 }
+const Redirect = () =>{
+  return import("../components/Redirect.vue")
+}
 
 const routes = [
     {
@@ -59,6 +62,11 @@ const routes = [
       path:'/result',
       name: 'result',
       component: Result
+    },
+    {
+      path:'/redirect',
+      name: 'redirect',
+      component: Redirect
     },
   ]
 
