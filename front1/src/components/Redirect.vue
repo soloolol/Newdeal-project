@@ -48,15 +48,15 @@ const kakaoHeader = {
       Kakao.Auth.setAccessToken(accessToken)
       await Kakao.API.request({
           url: "/v2/user/me",
-          success: function (response) {
-              data = response;
+          success: function (res) {
+              this.$store.dispatch("userGetAction", res);
+              this.$router.push({name:'home'})
           },
-          fail: function (error) {
-              console.log(error);
+          fail: function (err) {
+              console.log(err);
           },
       });
       console.log('카카오 계정 정보', data);
-      return data; //
   }
 
   export default {
@@ -74,10 +74,7 @@ const kakaoHeader = {
     created(){
       if(this.$route.query.code){
           console.log('크리에이티드 훅 시작, 인가코드 :',this.$route.query.code)
-          const data = getKakaoToken(this.$route.query.code)
-          console.log('크리에이티드 훅 토큰 데이터 받아옴 :',data)
-          this.$store.dispatch("userGetAction", data)
-          console.log('크리에이티드 훅 끝 actions 뒤',data)
+          getKakaoToken(this.$route.query.code)
         }
     }
   };
