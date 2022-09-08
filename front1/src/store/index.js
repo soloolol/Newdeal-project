@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { types } from 'sass'
 
 Vue.use(Vuex)
 
@@ -25,7 +26,7 @@ export default new Vuex.Store({
       commit('fishToState', payload)
     },
     userGetAction: async function ({commit}, payload) {
-      // console.log('여기는 스토어 actions 시작점',payload)
+      console.log('여기는 스토어 actions 시작점',payload)
       await axios.post("https://nunukang.shop/user", payload)
       .then( res => {
         console.log(res.data); //displayName : 닉네임
