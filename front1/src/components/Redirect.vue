@@ -77,7 +77,7 @@ const kakaoHeader = {
           const data = getKakaoToken(this.$route.query.code)
           console.log('크리에이티드 훅 토큰 데이터 받아옴 :',data)
           this.$store.dispatch("userGetAction", data)
-          console.log('크리에이티드 훅 끝 actions')
+          console.log('크리에이티드 훅 끝 actions 뒤',data)
         }
     }
   };
