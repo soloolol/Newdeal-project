@@ -135,12 +135,15 @@
       return {
         value: 1,
         active: true,
-        userId: this.$store.state.userInfo
+        userId: '',
       }
     },
 
     created(){
 
+    },
+    mounted(){
+      this.userId = this.$store.state.userId
     }
   };
 </script>
