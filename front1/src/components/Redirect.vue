@@ -69,15 +69,13 @@ const kakaoHeader = {
       }
     },
 
-    created(){
+    async created(){
       if(this.$route.query.code){
-          console.log('크리에이티드 훅 시작, 인가코드 :',this.$route.query.code)
-          const data = getKakaoToken(this.$route.query.code)
-          .then(res => {
-                console.log('크리에이트 then => res:',res)
-                this.$store.dispatch("userGetAction", res);
-                this.$router.push({name:'home'})
-            })
+        console.log('크리에이티드 훅 시작, 인가코드 :',this.$route.query.code)
+        const data = await getKakaoToken(this.$route.query.code)
+        console.log('action 전',data)
+        this.$store.dispatch("userGetAction", data);
+        this.$router.push({name:'home'})
         }
     }
   };
