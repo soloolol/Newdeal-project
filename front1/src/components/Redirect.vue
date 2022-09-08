@@ -41,7 +41,7 @@ const kakaoHeader = {
   };
 
   //계정정보요청
-  const getKakaoUserInfo = async (accessToken) => {
+  const getKakaoUserInfo = async function(accessToken){
       let data = '';
       Kakao.Auth.setAccessToken(accessToken)
       await Kakao.API.request({
@@ -57,6 +57,8 @@ const kakaoHeader = {
       return data
   }
 
+
+  
   export default {
     name: 'Redirect',
 
