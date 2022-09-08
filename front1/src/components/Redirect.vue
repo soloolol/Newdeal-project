@@ -9,9 +9,7 @@
 <script>
 import axios from 'axios'
 
-const Admin_key = '0dc9bea1c513adefb9eb0ff3cacde6ea'
 const kakaoHeader = {
-    // 'Authorization' : `KakaoAK ${Admin_key}`, //Admin key
     'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
   };
 
