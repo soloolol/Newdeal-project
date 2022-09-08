@@ -6,7 +6,7 @@
         class="mx-auto pa-2"
         max-width="400"
         >
-            <v-title>{{ this.$store.state.userId }}</v-title>
+            <v-card-title>{{ this.$store.state.userId }}</v-card-title>
 
             <div id="camera">
                 <!-- <button id="flip-button">카메라전환</button> -->
