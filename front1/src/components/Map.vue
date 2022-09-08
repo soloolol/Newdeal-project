@@ -80,6 +80,7 @@
         let getData
 
         //서버로부터 데이터 가져오기
+        //await this.axios.post('http://localhost:3000/map/center', centerData)
         await this.axios.post('https://nunukang.shop/map/center', centerData)
         .then(function(response){
           getData = response.data
@@ -104,7 +105,8 @@
           let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
           //카카오 지도 개별 마커 위치 설정
-          let position = new kakao.maps.LatLng(...markerPositions[i])
+          //let position = new kakao.maps.LatLng(...markerPositions[i])
+          let position = new kakao.maps.LatLng(getData[i].latitude, getData[i].longitude)
 
           console.log(position)
           //카카오 지도 마커 표시

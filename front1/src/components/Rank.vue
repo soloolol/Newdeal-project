@@ -41,9 +41,10 @@
     },
     // 마운트 할때 default selected data = "참돔" 불러오기
     async mounted(){
+      //await this.axios.post('http://localhost:3000/rank/fish',this.selected)
       await this.axios.post("https://nunukang.shop/rank/fish",this.selected)
         .then(resp => {
-          this.rankList=resp.data.rankList
+          this.rankList=resp.data
         })
         .catch(err => {
           if(err) throw err
@@ -52,9 +53,10 @@
 
     methods:{
       async getRankData(){
+        //await this.axios.post('http://localhost:3000/rank/fish',this.selected)
         await this.axios.post("https://nunukang.shop/rank/fish",this.selected)
         .then(resp => {
-          this.rankList = resp.data.rankList
+          this.rankList = resp.data
         })
         .catch(err => {
           if(err) throw err
