@@ -47,7 +47,7 @@ const kakaoHeader = {
       await Kakao.API.request({
           url: "/v2/user/me",
           success: function (res) {
-  
+            data = res
           },
           fail: function (err) {
               console.log(err);
