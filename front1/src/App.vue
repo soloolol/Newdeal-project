@@ -36,7 +36,7 @@
         </v-btn>
       </div>
     </v-app-bar>
-    <h5>{{ userId }}</h5>
+    
     <v-main id="main" style="display: flex; justify-content: center;">
       <router-view/>
     </v-main>
