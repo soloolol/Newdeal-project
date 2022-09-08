@@ -25,6 +25,7 @@ export default new Vuex.Store({
       commit('fishToState', payload)
     },
     userGetAction: function ({commit}, payload) {
+      console.log('여기는 스토어 actions 시작점')
       axios.post("https://nunukang.shop/user", payload)
       .then( res => {
         console.log(res.data); //displayName : 닉네임

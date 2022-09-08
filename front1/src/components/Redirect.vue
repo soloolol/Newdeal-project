@@ -73,9 +73,11 @@ const kakaoHeader = {
 
     created(){
       if(this.$route.query.code){
-          console.log(this.$route.query.code)
+          console.log('크리에이티드 훅 시작, 인가코드 :',this.$route.query.code)
           const data = getKakaoToken(this.$route.query.code)
+          console.log('크리에이티드 훅 토큰 데이터 받아옴 :',data)
           this.$store.dispatch("userGetAction", data)
+          console.log('크리에이티드 훅 끝 actions')
         }
     }
   };
