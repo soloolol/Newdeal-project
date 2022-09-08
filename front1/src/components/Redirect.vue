@@ -73,6 +73,7 @@ const kakaoHeader = {
           console.log('크리에이티드 훅 시작, 인가코드 :',this.$route.query.code)
           getKakaoToken(this.$route.query.code)
           .then(res => {
+                console.log('크리에이트 then => res:',res)
                 this.$store.dispatch("userGetAction", res);
                 this.$router.push({name:'home'})
             })
