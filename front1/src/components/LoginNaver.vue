@@ -31,7 +31,12 @@ export default {
             const naverLogin = new naver.LoginWithNaverId({
             clientId: '2jr941k4E1YtJ1JN3Cw7'
             })
+            console.log("네이버로그인중",window.naverLogin)
+
             naverLogin.init()
+
+            console.log("네이버로그인중 init 다음",window.naverLogin)
+
             naverLogin.getLoginStatus(function(status) {
             if (status) {
                 const info = {
