@@ -36,7 +36,7 @@
       <v-row justify="center">
         <v-col cols="12">
           <v-row justify="center" class="mb-10">
-            <v-btn>로그아웃</v-btn>
+            <v-btn @click="logOut">로그아웃</v-btn>
           </v-row>
         </v-col>
       </v-row>
