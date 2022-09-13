@@ -125,10 +125,10 @@
 
         // 로그아웃
         kakaoLogOut(){
-          console.log('3')
-          const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
-          window.Kakao.init(kakaoKey); // 초기화
-          window.Kakao.isInitialized();
+          // console.log('3')
+          // const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
+          // window.Kakao.init(kakaoKey); // 초기화
+          // window.Kakao.isInitialized();
           console.log('4')
 
           window.Kakao.Auth.logout(function () {
