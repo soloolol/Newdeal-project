@@ -11,7 +11,7 @@
 const callbackNaver = async ()=>{
         console.log("네이버로그인중1",window.naverLogin)
 
-        const naverLogin = new naver.LoginWithNaverId({
+        const naverLogin = await new naver.LoginWithNaverId({
         clientId: '2jr941k4E1YtJ1JN3Cw7'
         })
         console.log("네이버로그인중2",window.naverLogin)
@@ -21,7 +21,7 @@ const callbackNaver = async ()=>{
         console.log("네이버로그인중3",window.naverLogin)
 
         let data = '';
-        await naverLogin.getLoginStatus( async function(status) {
+        await naverLogin.getLoginStatus(function(status) {
             if (status) {
                 const info = {
                 id: naverLogin.user.id,
@@ -30,7 +30,7 @@ const callbackNaver = async ()=>{
                 nickname: naverLogin.user.nickname,
                 profile_image: naverLogin.user.profile_image,
                 }
-                data = await info
+                data = info
                 console.log(data)
             } else {
                 console.log('AccessToken이 올바르지 않습니다.') 
