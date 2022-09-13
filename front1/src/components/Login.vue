@@ -106,6 +106,7 @@
             console.log(this.$store.state.userInfo)
             console.log('1')
             this.kakaoLogOut()
+    
           }else if(window.naver_id_login.getAccessToken()){
             console.log(this.$store.state.userInfo)
             console.log('2')
@@ -124,11 +125,11 @@
 
         // 로그아웃
         kakaoLogOut(){
-
+          console.log('3')
           const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
           window.Kakao.init(kakaoKey); // 초기화
           window.Kakao.isInitialized();
-          console.log('3')
+          console.log('4')
 
           window.Kakao.Auth.logout(function () {
             alert('로그아웃 되었습니다.', window.Kakao.Auth.getAccessToken());
