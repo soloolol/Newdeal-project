@@ -105,14 +105,14 @@
             console.log('1')
             this.kakaoLogOut()
     
-          }else if(window.naverLogin.accessToken){
+          }else if(window.naverLogin){
             console.log(this.$store.state.userInfo)
             console.log('2')
             this.naverLogOut()
           }else {
             this.googleLogOut()
           }
-          storeUserInfoReset()
+          this.storeUserInfoReset()
           console.log(this.$store.state.userInfo)
         },
 
@@ -124,10 +124,9 @@
         // 로그아웃
         kakaoLogOut(){
           console.log('4')
-          window.Kakao.Auth.logout(function () {
-            alert('로그아웃 되었습니다.', window.Kakao.Auth.getAccessToken());
+          window.Kakao.Auth.logout()
             this.$router.push({name:'home'});
-          });
+          }
         },
 
         naverLogOut(){
@@ -140,7 +139,5 @@
 
         },
 
-      },
-
-    }
+      }
 </script>
