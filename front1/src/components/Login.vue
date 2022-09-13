@@ -63,14 +63,14 @@
       //로그인 값 있으면 로그아웃 창 띄우고 아니면 로그인 창
       mounted(){
         console.log(this.$store.state.userInfo)
-        console.log(window.Kakao.Auth.getAccessToken())
-        if (window.Kakao.Auth.getAccessToken()) {
+        console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
+        console.log('네이버로그인되어음',window.naver_id_login.getAccessToken())
+        if (window.Kakao.Auth.getAccessToken() || window.naver_id_login.getAccessToken()) {
           this.login = true;
         }else {
           this.login = false;
         };
 
-        this.loginWithNaver()
       },
 
    
@@ -125,17 +125,11 @@
 
         // 로그아웃
         kakaoLogOut(){
-          // console.log('3')
-          // const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
-          // window.Kakao.init(kakaoKey); // 초기화
-          // window.Kakao.isInitialized();
           console.log('4')
-
           window.Kakao.Auth.logout(function () {
             alert('로그아웃 되었습니다.', window.Kakao.Auth.getAccessToken());
             this.$router.push({name:'home'});
           });
-
         },
 
         naverLogOut(){
