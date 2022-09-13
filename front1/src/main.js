@@ -12,6 +12,19 @@ Vue.prototype.axios = axios
 const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
 window.Kakao.init(kakaoKey);
 
+const client_id = "2jr941k4E1YtJ1JN3Cw7"
+const callbackURL = "https://nunutest.shop/login/naver"
+
+const naverLogin = new naver.LoginWithNaverId(
+  {
+    clientId: client_id,
+    callbackUrl: callbackURL,
+    loginButton: {color: "green", type: 3, height: 45},
+    callbackHandle: true
+  }
+);
+window.naverLogin.init();
+
 new Vue({
   router,
   store,

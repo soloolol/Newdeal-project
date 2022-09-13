@@ -17,16 +17,8 @@ export default {
     },
 
     async created(){
-        const client_id = "2jr941k4E1YtJ1JN3Cw7"
-        const callbackURL = "https://nunutest.shop/login/naver"
-        
-        await new window.naver_id_login( client_id, callbackURL );
-        
-        const accessToken = await naver_id_login.getAccessToken();
-        console.log("네이버로그인중",accessToken)
-
         // 네이버 사용자 프로필 조회
-	    const data = await window.naver_id_login.get_naver_userprofile();
+	    const data = await callbackNaver()
         console.log("네이버로그인중",data)
         
         await this.$store.dispatch("userGetAction", {data, social});
@@ -35,12 +27,28 @@ export default {
     },
 
     methods:{
-        naverSignInCallback() {
-		// naver_id_login.getProfileData('프로파일항목명');
-		alert(naver_id_login.getProfileData('email'));
-		alert(naver_id_login.getProfileData('nickname'));
-		alert(naver_id_login.getProfileData('age'));
-	    },
+        callbackNaver(){
+            const naverLogin = new naver.LoginWithNaverId({
+            clientId: '2jr941k4E1YtJ1JN3Cw7'
+            })
+            naverLogin.init()
+            naverLogin.getLoginStatus(function(status) {
+            if (status) {
+                const info = {
+                id: naverLogin.user.id,
+                age: naverLogin.user.age,
+                gender: naverLogin.user.gender,
+                nickname: naverLogin.user.nickname,
+                profile_image: naverLogin.user.profile_image,
+                }
+
+                console.log(info)
+                return info
+            } else {
+                console.log('AccessToken이 올바르지 않습니다.') 
+            }
+            })
+        }
     }
 }
 </script>
