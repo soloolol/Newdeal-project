@@ -62,6 +62,7 @@
 
       //로그인 값 있으면 로그아웃 창 띄우고 아니면 로그인 창
       mounted(){
+        console.log(this.$store.state.userInfo)
         if (window.Kakao.Auth.getAccessToken()) {
           this.login = true;
         }else {
@@ -101,13 +102,18 @@
         
         logOut(){
           if(window.Kakao.Auth.getAccessToken()){
+            console.log(this.$store.state.userInfo)
+            console.log('1')
             this.kakaoLogOut()
           }else if(window.naver_id_login.getAccessToken()){
+            console.log(this.$store.state.userInfo)
+            console.log('2')
             this.naverLogOut()
           }else {
             this.googleLogOut()
           }
           storeUserInfoReset()
+          console.log(this.$store.state.userInfo)
         },
 
         storeUserInfoReset(){
