@@ -64,7 +64,7 @@
       mounted(){
         console.log(this.$store.state.userInfo)
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
-        console.log('네이버로그인되어음',window.naverLogin.getAccessToken())
+        console.log('네이버로그인되어음',window.naverLogin)
         if (window.Kakao.Auth.getAccessToken() || window.naver.accessToken) {
           this.login = true;
         }else {
@@ -88,7 +88,7 @@
         loginWithNaver(){
           const naverLogin = new naver.LoginWithNaverId({
             clientId: "2jr941k4E1YtJ1JN3Cw7", // Naver client key
-            callbackUrl: `${window.location.origin}/login/naver`,
+            callbackUrl: "https://nunutest.shop/login/naver",
             callbackHandle: true
           })
           naverLogin.init()
