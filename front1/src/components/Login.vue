@@ -128,6 +128,7 @@
           const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
           window.Kakao.init(kakaoKey); // 초기화
           window.Kakao.isInitialized();
+          console.log('3')
 
           window.Kakao.Auth.logout(function () {
             alert('로그아웃 되었습니다.', window.Kakao.Auth.getAccessToken());
