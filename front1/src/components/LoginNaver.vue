@@ -56,6 +56,7 @@ export default {
 	    const data = await callbackNaver()
         console.log("네이버로그인중",data)
         
+        const social = 'naver'
         await this.$store.dispatch("userGetAction", {data, social});
 
         this.$router.push({name:'home'})
