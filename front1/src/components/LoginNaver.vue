@@ -8,7 +8,7 @@
     
 <script>
 
-const callbackNaver = async function(){
+const callbackNaver = async ()=>{
         console.log("네이버로그인중1",window.naverLogin)
 
         const naverLogin = new naver.LoginWithNaverId({
@@ -36,7 +36,8 @@ const callbackNaver = async function(){
                 console.log('AccessToken이 올바르지 않습니다.') 
             }
         })
-        
+        console.log(data)
+
         return data
     }
 
