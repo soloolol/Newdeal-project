@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     userInfo: null,
     fishTmp: undefined,
+    snackbarCookie: 0,
   },
   getters: {
 
@@ -18,22 +19,53 @@ export default new Vuex.Store({
     },
     userToState : function (state, payload) {
       state.userInfo = payload
+    },
+    snackbarCookie : function(state) {
+      state.snackbarCookie ++
     }
   },
   actions: {
     fishTmpAction: function ({commit}, payload) {
       commit('fishToState', payload)
     },
-    userGetAction: async function ({commit}, payload) {
-      console.log('여기는 스토어 actions 시작점',payload)
-      await axios.post("https://nunukang.shop/user", payload)
-      .then( res => {
-        console.log(res.data); //displayName : 닉네임
-        commit('userToState',res.data);
-      }).catch( err => {
-        console.log(err)
-      })
-    }
+
+    snackbarCookie: function({commit}){
+      commit('snackbarCookie')
+    },
+
+    userGetAction: async function ({commit}, {payload, social}) {
+      if( social = 'kakao'){
+        console.log('여기는 스토어 actions kakao',payload)
+        await axios.post("https://nunukang.shop/kakao", payload)
+        .then( res => {
+          console.log(res.data); //displayName : 닉네임
+          commit('userToState',res.data);
+        }).catch( err => {
+          console.log(err)
+        })
+      } else if( social = 'naver'){
+        console.log('여기는 스토어 actions naver',payload)
+        await axios.post("https://nunukang.shop/naver", payload)
+        .then( res => {
+          console.log(res.data); //displayName : 닉네임
+          commit('userToState',res.data);
+        }).catch( err => {
+          console.log(err)
+        })
+      } else {
+        console.log('여기는 스토어 actions google',payload)
+        await axios.post("https://nunukang.shop/google", payload)
+        .then( res => {
+          console.log(res.data); //displayName : 닉네임
+          commit('userToState',res.data);
+        }).catch( err => {
+          console.log(err)
+        })
+      }
+
+    },
+
+
   },
     //   getUserAction: function ({commit},)
   // },

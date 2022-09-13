@@ -23,8 +23,11 @@ const Login = () =>{
 const Result = () =>{
   return import("../components/Result.vue")
 }
-const Redirect = () =>{
-  return import("../components/Redirect.vue")
+const LoginKakao = () =>{
+  return import("../components/LoginKakao.vue")
+}
+const LoginNaver = () =>{
+  return import("../components/LoginNaver.vue")
 }
 
 const routes = [
@@ -64,9 +67,14 @@ const routes = [
       component: Result
     },
     {
-      path:'/redirect',
-      name: 'redirect',
-      component: Redirect
+      path:'/login/kakao',
+      name: 'kakao',
+      component: LoginKakao
+    },
+    {
+      path:'/login/naver',
+      name: 'naver',
+      component: LoginNaver
     },
   ]
 

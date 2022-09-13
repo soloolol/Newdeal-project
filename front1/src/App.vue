@@ -36,7 +36,7 @@
         </v-btn>
       </div>
     </v-app-bar>
-    
+
     <v-main id="main" style="display: flex; justify-content: center;">
       <router-view/>
     </v-main>
@@ -118,10 +118,20 @@
         style="height:35px;transform: rotate(25deg);"
       />
     </v-btn>
+    <template>
+      <v-snackbar
+        :value="snackbar"
+        :timeout="timeout"
+        rounded="pill"
+        >
+        환영합니다 ! <strong>{{ this.userId }}</strong> 님
+        </v-snackbar>
+    </template>
   </v-app>
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
 
   export default {
     name: 'App',
@@ -134,7 +144,9 @@
       return {
         value: 1,
         active: true,
-        userId: '',
+        userId: null,
+        snackbar: false,
+        timeout: 1500,
       }
     },
 
@@ -142,8 +154,15 @@
 
     },
     mounted(){
-      this.userId = this.$store.state.userId
-    }
+      this.userId = this.$store.state.userInfo
+      if(this.userId & this.$store.state.cookie === 0){
+            this.snackbar = true
+            this.snackbarCookie()
+        }
+    },
+    methods: {
+            ...mapActions(['snackbarCookie']),
+    },
   };
 </script>
 

@@ -6,16 +6,15 @@
         class="mx-auto pa-2"
         max-width="400"
         >
-            <v-card-title>{{ this.$store.state.userInfo }}</v-card-title>
+            <!-- <v-card-title>{{ this.$store.state.userInfo }}</v-card-title> -->
 
             <div id="camera">
                 <!-- <button id="flip-button">카메라전환</button> -->
+                <img src="//:0" alt="" ref="output" id="camera--output">
 
                 <canvas id="camera--sensor" ref="canvas"></canvas>
 
                 <video id="camera--view" ref="camera" autoplay playsinline></video>
-
-                <img src="//:0" alt="" ref="output" id="camera--output">
 
             </div>
 
@@ -37,6 +36,12 @@
                 style="height:35px;transform: rotate(25deg);"
             />
         </v-btn>
+        <!-- <v-snackbar
+        :value="snackbar"
+        :timeout="timeout"
+        >
+        환영합니다 ! {{ this.$store.state.userId }} 님
+        </v-snackbar> -->
     </v-container>
 </template>
  
@@ -52,9 +57,9 @@
         data() {
             return {
                 isCameraOpen: false,
-                vHeight:640,
-                vWidth:320,
+                timeout: 1200,
                 items: [], 
+                // snackbar: false,
             }
         },
         created(){
@@ -64,7 +69,7 @@
             this.cameraStart()
         },
         methods: {
-            ...mapActions(['fishTmpAction']),
+            ...mapActions(['fishTmpAction','snackbarCookie']),
 
             cameraStart(){
                 const front = false;

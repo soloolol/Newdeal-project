@@ -19,7 +19,7 @@ const kakaoHeader = {
         const data = {
             grant_type: 'authorization_code',
             client_id: 'b1e391b01ea6209470f58d4a56becb42', //RESTAPI Key
-            redirect_uri: 'https://nunutest.shop/redirect',
+            redirect_uri: 'https://nunutest.shop/login/kakao',
             code: code,
         };
 
@@ -74,9 +74,10 @@ const kakaoHeader = {
     async created(){
       if(this.$route.query.code){
         const data = await getKakaoToken(this.$route.query.code)
-        console.log('created훅',data)
-        await this.$store.dispatch("userGetAction", data);
-        this.$router.push({name:'home'})
+        // console.log('created훅',data)
+        const social = "kakao"
+        await this.$store.dispatch("userGetAction", {data, social});
+        this.$router.push({name:'home'});
         }
     },
   };
