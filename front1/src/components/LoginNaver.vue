@@ -27,7 +27,7 @@ export default {
     },
 
     methods:{
-        callbackNaver(){
+        async callbackNaver(){
             console.log("네이버로그인중1",window.naverLogin)
 
             const naverLogin = new naver.LoginWithNaverId({
@@ -39,22 +39,24 @@ export default {
 
             console.log("네이버로그인중3",window.naverLogin)
 
-            naverLogin.getLoginStatus(function(status) {
-            if (status) {
-                const info = {
-                id: naverLogin.user.id,
-                age: naverLogin.user.age,
-                gender: naverLogin.user.gender,
-                nickname: naverLogin.user.nickname,
-                profile_image: naverLogin.user.profile_image,
-                }
+            const data = await naverLogin.getLoginStatus(function(status) {
+                if (status) {
+                    const info = {
+                    id: naverLogin.user.id,
+                    age: naverLogin.user.age,
+                    gender: naverLogin.user.gender,
+                    nickname: naverLogin.user.nickname,
+                    profile_image: naverLogin.user.profile_image,
+                    }
 
-                console.log(info)
+                    console.log(info)
+                } else {
+                    console.log('AccessToken이 올바르지 않습니다.') 
+                }
                 return info
-            } else {
-                console.log('AccessToken이 올바르지 않습니다.') 
-            }
             })
+            
+            return data
         }
     }
 }
