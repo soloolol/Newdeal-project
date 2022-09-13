@@ -63,6 +63,7 @@
       //로그인 값 있으면 로그아웃 창 띄우고 아니면 로그인 창
       mounted(){
         console.log(this.$store.state.userInfo)
+        console.log(window.Kakao.Auth.getAccessToken())
         if (window.Kakao.Auth.getAccessToken()) {
           this.login = true;
         }else {
