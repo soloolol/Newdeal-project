@@ -65,7 +65,7 @@
         console.log(this.$store.state.userInfo)
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
         console.log('네이버로그인되어음',window.naverLogin)
-        if (window.Kakao.Auth.getAccessToken() || window.naver.accessToken) {
+        if (window.Kakao.Auth.getAccessToken() || window.naverLogin) {
           this.login = true;
         }else {
           this.login = false;
@@ -132,6 +132,7 @@
 
         naverLogOut(){
           window.naverLogin.logout();
+          alert('로그아웃 되었습니다.', window.naverLogin.accessToken);
           this.$router.push({name:'home'});
         },
 
