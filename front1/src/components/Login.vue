@@ -103,9 +103,6 @@
             console.log('2')
             this.naverLogOut()
           }
-          this.$store.dispatch('snackbarCookieReset')
-          this.storeUserInfoReset()
-          console.log(this.$store.state.userInfo)
         },
 
         storeUserInfoReset(){
@@ -115,18 +112,22 @@
 
         // 로그아웃
         kakaoLogOut(){
-          console.log('4')
+          // console.log('4')
           window.Kakao.Auth.logout()
-            this.$router.push({name:'home'});
-          }
+          this.$store.dispatch('snackbarCookieReset')
+          this.storeUserInfoReset()
+          alert('로그아웃 되었습니다.',this.$store.state.userInfo)
+          this.$router.push({name:'home'});
         },
 
         naverLogOut(){
-          window.naverLogin.logout();
+          // window.naverLogin.logout();
+          this.$store.dispatch('snackbarCookieReset')
+          this.storeUserInfoReset()
           alert('로그아웃 되었습니다.', this.$store.state.userInfo);
           this.$router.push({name:'home'});
         },
 
-
       }
+    }
 </script>
