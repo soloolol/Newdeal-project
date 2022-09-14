@@ -36,7 +36,8 @@ export default {
 
             console.log("네이버로그인중2",window.naverLogin)
 
-        await naverLogin.getLoginStatus(function(status) {
+        await naverLogin.getLoginStatus(async function(status) {
+            let self = this;
             if (status) {
                 let info = {
                 id: naverLogin.user.id,
@@ -46,15 +47,14 @@ export default {
                 profile_image: naverLogin.user.profile_image,
                 }
                 console.log("네이버로그인중3",info)
+                const social = 'naver'
+                await self.$store.dispatch("userGetAction", {info, social});
+                self.$router.push({name:'home'})
             } else {
                 console.log('AccessToken이 올바르지 않습니다.') 
             }
         })  
         console.log("네이버로그인5", info)
-        const social = 'naver'
-        await this.$store.dispatch("userGetAction", {info, social});
-        this.$router.push({name:'home'})
-
     },
 
     // updated: async function () {
