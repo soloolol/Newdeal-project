@@ -19,9 +19,6 @@
           <v-row justify="center" class="mb-10">
             <v-btn text elevation="0" @click="loginWithKakao"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></v-btn>
           </v-row>
-          <v-row justify="center" class="mb-10">
-            <v-btn text elevation="0" @click="loginWithGoogle"><img src="../assets/google_login.png" width="209px" height="47px"/></v-btn>
-          </v-row>
         </v-col>
       </v-row>
     </v-card>
@@ -130,9 +127,6 @@
           this.$router.push({name:'home'});
         },
 
-        googleLogOut(){
-
-        },
 
       }
 </script>
