@@ -53,8 +53,8 @@ export default new Vuex.Store({
         }).catch( err => {
           console.log(err)
         })
-        commit('userToState',user);
-        console.log(this.state.userInfo)
+        // commit('userToState',user);
+        // console.log(this.state.userInfo)
 
       } else if( social === 'naver'){
         console.log('여기는 스토어 actions naver',data)
