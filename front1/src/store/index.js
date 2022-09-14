@@ -43,7 +43,7 @@ export default new Vuex.Store({
     userGetAction: async function ({commit}, {data, social}) {
       if( social = 'kakao'){
         // console.log(social,data)
-        // alert('여기는 스토어 actions kakao',data)
+        alert('여기는 스토어 actions kakao',data)
         await axios.post("https://nunukang.shop/kakao", data)
         .then( res => {
           console.log(res.data); //displayName : 닉네임
