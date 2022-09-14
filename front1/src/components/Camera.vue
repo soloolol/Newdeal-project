@@ -60,7 +60,8 @@
                 timeout: 1200,
                 items: [], 
                 // snackbar: false,
-                positionObj:{}
+                latitude:null,
+                longitude:null,
             }
         },
         created(){
@@ -121,8 +122,8 @@
 
                 //잡은 물고기 location(위도, 경도)
                 this.getCurrentPosition();
-                let lat = this.positionObj.latitude
-                let lng = this.positionObj.longitude
+                let lat = this.latitude
+                let lng = this.longitude
 
                 console.log('위도',lat)
                 formData.append('latitude', lat)
@@ -171,19 +172,17 @@
                 if (!navigator.geolocation) {
                     alert('위치 정보 제공을 허용해 주세요')
                 } else {
-                    navigator.geolocation.getCurrentPosition(this.getPositionValue, this.geolocationError)
+
+                    navigator.geolocation.getCurrentPosition(pos => {
+                        this.latitude = pos.coords.latitude;
+                        this.longitude = pos.coords.longitude;
+                    },this.geolocationError)
                 }
             },
-
-            getPositionValue (val) {
-                this.positionObj.latitude = val.coords.latitude
-                this.positionObj.longitude = val.coords.longitude
-            },
-
             geolocationError () {
                 console.log('위치 정보 찾을 수 없음')
-                this.positionObj.latitude = 0
-                this.positionObj.longitude = 0
+                this.latitude = 0
+                this.longitude = 0
             },
         
 
