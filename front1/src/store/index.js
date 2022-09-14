@@ -44,10 +44,10 @@ export default new Vuex.Store({
       if( social === 'kakao'){
         // console.log(social,data)
         // alert('여기는 스토어 actions kakao',data)
-        const user = await axios.post("https://nunukang.shop/kakao", data)
+        await axios.post("https://nunukang.shop/kakao", data)
         .then( res => {
           console.log(res.data); //displayName : 닉네임
-          // commit('userToState',res.data);
+          commit('userToState',res.data);
           // console.log('커밋도됨?',this.state.userInfo);
           return res.data
         }).catch( err => {

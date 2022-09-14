@@ -64,8 +64,8 @@
       mounted(){
         console.log(this.$store.state.userInfo)
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
-        console.log('네이버로그인되어음',window.naverLogin.getLoginStatus())
-        if (window.Kakao.Auth.getAccessToken() || window.naverLogin) {
+        console.log('네이버로그인되어있음?',this.$store.state.userInfo)
+        if (window.Kakao.Auth.getAccessToken() || this.$store.state.userInfo) {
           this.login = true;
         }else {
           this.login = false;
@@ -94,10 +94,6 @@
           naverLogin.init()
           naverLogin.reprompt()
         },
-
-        loginWithGoogle(){
-
-        },
         
         logOut(){
           if(window.Kakao.Auth.getAccessToken()){
@@ -105,12 +101,10 @@
             console.log('1')
             this.kakaoLogOut()
     
-          }else if(window.naverLogin){
+          }else{
             console.log(this.$store.state.userInfo)
             console.log('2')
             this.naverLogOut()
-          }else {
-            this.googleLogOut()
           }
           this.$store.dispatch('snackbarCookieReset')
           this.storeUserInfoReset()
@@ -132,7 +126,7 @@
 
         naverLogOut(){
           window.naverLogin.logout();
-          alert('로그아웃 되었습니다.', window.naverLogin.accessToken);
+          alert('로그아웃 되었습니다.', this.$store.state.userInfo);
           this.$router.push({name:'home'});
         },
 
