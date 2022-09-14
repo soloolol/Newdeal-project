@@ -49,12 +49,10 @@ export default new Vuex.Store({
           console.log(res.data); //displayName : 닉네임
           commit('userToState',res.data);
           // console.log('커밋도됨?',this.state.userInfo);
-          return res.data
+          console.log(this.state.userInfo);
         }).catch( err => {
           console.log(err)
         })
-        // commit('userToState',user);
-        // console.log(this.state.userInfo)
 
       } else if( social === 'naver'){
         console.log('여기는 스토어 actions naver',data)
@@ -62,6 +60,7 @@ export default new Vuex.Store({
         .then( res => {
           console.log(res.data); //displayName : 닉네임
           commit('userToState',res.data);
+          console.log(this.state.userInfo);
         }).catch( err => {
           console.log(err)
         })
