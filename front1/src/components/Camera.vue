@@ -60,6 +60,7 @@
                 timeout: 1200,
                 items: [], 
                 // snackbar: false,
+                positionObj:{}
             }
         },
         created(){
@@ -119,8 +120,10 @@
                 formData.append('fish', capturedPhotoFile)
 
                 //잡은 물고기 location(위도, 경도)
-                formData.append('latitude', 35.054700)
-                formData.append('longitude', 126.457823)
+                this.getCurrentPosition
+
+                formData.append('latitude', this.positionObj.latitude)
+                formData.append('longitude', this.positionObj.longitude)
 
                 //Upload image api
                     //await this.axios.post('http://localhost:3000/matchFish/caculateData', formData,{
@@ -160,6 +163,27 @@
                 let blob = new Blob([u8arr],{type: mime})
                 return new File([blob], filename);
             },
+
+            getCurrentPosition () {
+                if (!navigator.geolocation) {
+                    alert('위치 정보 제공을 허용해 주세요')
+                } else {
+                    navigator.geolocation.getCurrentPosition(this.getPositionValue, this.geolocationError)
+                }
+            },
+
+            getPositionValue (val) {
+                this.positionObj.latitude = val.coords.latitude
+                this.positionObj.longitude = val.coords.longitude
+            },
+
+            geolocationError () {
+                console.log('위치 정보 찾을 수 없음')
+                this.positionObj.latitude = 0
+                this.positionObj.longitude = 0
+            },
+        
+
         }
     }
 

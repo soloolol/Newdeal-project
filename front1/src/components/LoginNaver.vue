@@ -46,7 +46,7 @@ export default {
                     nickname: naverLogin.user.nickname,
                     profile_image: naverLogin.user.profile_image,
                     }
-
+                    
                     console.log("네이버로그인중3",info)
                     return info
                 } else {

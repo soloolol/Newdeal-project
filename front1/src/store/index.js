@@ -54,8 +54,8 @@ export default new Vuex.Store({
           console.log(err)
         })
       } else {
-        console.log('여기는 스토어 actions google',payload)
-        await axios.post("https://nunukang.shop/google", payload)
+        console.log('여기는 스토어 actions google',data)
+        await axios.post("https://nunukang.shop/google", data)
         .then( res => {
           console.log(res.data); //displayName : 닉네임
           commit('userToState',res.data);
