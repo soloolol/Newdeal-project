@@ -23,7 +23,22 @@
           ></v-select>
         </v-col>
       </v-row>
-      <v-list v-for="list in rankList" :key="list.rank">{{list}}</v-list>
+      <v-list>
+        <v-row align="center">
+          <v-col class="d-flex" cols="3" sm="6">순위</v-col>
+          <v-col class="d-flex" cols="3" sm="6">ID</v-col>
+          <v-col class="d-flex" cols="3" sm="6">길이</v-col>
+          <v-col class="d-flex" cols="3" sm="6">등급</v-col>
+        </v-row>
+      </v-list>
+      <v-list v-for="list in rankList" :key="list.rank">
+        <v-row align="center">
+          <v-col class="d-flex" cols="3" sm="6">{{list.rank}}</v-col>
+          <v-col class="d-flex" cols="3" sm="6">{{list.ID}}</v-col>
+          <v-col class="d-flex" cols="3" sm="6">{{list.length}}</v-col>
+          <v-col class="d-flex" cols="3" sm="6">{{list.grade}}</v-col>
+        </v-row>  
+      </v-list>
     </v-card>
     </v-container>
 </template>

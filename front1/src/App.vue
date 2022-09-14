@@ -39,7 +39,11 @@
     <v-snackbar
       v-model="snackbar"
       :timeout="timeout"
-      rounded="pill"
+      shaped
+      color="primary"
+      style="height: 50px; opacity: 85%; margin-top: 100px;"
+      text
+      top
       >
       환영합니다 ! <strong>{{ this.userId }}</strong> 님
     </v-snackbar>
@@ -112,7 +116,7 @@
       value="home" 
       style="background-color: #FFFFFF;overflow:hidden;z-index:10; position:fixed;left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);"
       x-large
-      color="blue"
+      color="white"
       class="mb-2"
       @click="$router.push({name:'home'})"
     >

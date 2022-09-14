@@ -24,7 +24,7 @@
             fab
             style="background-color: #FFFFFF;overflow:hidden;z-index:100; position:fixed;left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);"
             x-large
-            color="blue"
+            color="light-blue"
             class="mb-2"
             @click="capture"
         >
