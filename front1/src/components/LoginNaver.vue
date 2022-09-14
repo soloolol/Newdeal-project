@@ -29,7 +29,12 @@ export default {
     // },
 
     mounted: async function () {
-        await this.callbackNaver();
+        const naverLogin = await new naver.LoginWithNaverId({
+            clientId: '2jr941k4E1YtJ1JN3Cw7'
+            })
+            naverLogin.init()
+
+            console.log("네이버로그인중2",window.naverLogin)
 
         await naverLogin.getLoginStatus(function(status) {
             if (status) {
@@ -62,17 +67,5 @@ export default {
     //     this.fireCallback = false;
     // },
 
-    methods:{
-        callbackNaver(){
-            console.log("네이버로그인중1",window.naverLogin)
-
-            const naverLogin = new naver.LoginWithNaverId({
-            clientId: '2jr941k4E1YtJ1JN3Cw7'
-            })
-            naverLogin.init()
-
-            console.log("네이버로그인중2",window.naverLogin)
-        }
-    }
 }
 </script>
