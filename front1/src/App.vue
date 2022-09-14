@@ -152,7 +152,7 @@
       this.userId = this.$store.state.userInfo
     },
     mounted(){
-      console.log(this.userId,this.$store.state.cookie)
+      console.log(this.userId,this.$store.state.snackbarCookie)
       if(this.userId & this.$store.state.cookie == 0){
             this.snackbar = true
             this.snackbarCookie()
