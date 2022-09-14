@@ -76,7 +76,7 @@
 
             cameraStart(){
                 const front = false;
-                const constraints = { video: { width: 640, height: 1280, facingMode: (front? "user" : "environment") } };
+                const constraints = { video: { width: 640, facingMode: (front? "user" : "environment") } };
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(stream => {
                         this.$refs.camera.srcObject = stream;
@@ -94,7 +94,7 @@
             },
  
             capture() {
-                const FLASH_TIMEOUT = 200;
+                const FLASH_TIMEOUT = 1000;
                 let self = this;
                 setTimeout(() => {
                     self.$refs.canvas.width = self.$refs.camera.videoWidth
