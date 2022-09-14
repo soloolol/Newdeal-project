@@ -43,15 +43,19 @@ export default new Vuex.Store({
     userGetAction: async function ({commit}, {data, social}) {
       if( social = 'kakao'){
         // console.log(social,data)
-        alert('여기는 스토어 actions kakao',data)
-        await axios.post("https://nunukang.shop/kakao", data)
+        // alert('여기는 스토어 actions kakao',data)
+        const user = await axios.post("https://nunukang.shop/kakao", data)
         .then( res => {
-          alert(res.data); //displayName : 닉네임
-          commit('userToState',res.data);
-          alert('커밋도됨?',this.state.userInfo)
+          console.log(res.data); //displayName : 닉네임
+          // commit('userToState',res.data);
+          // console.log('커밋도됨?',this.state.userInfo);
+          return res.data
         }).catch( err => {
           console.log(err)
         })
+        commit('userToState',user);
+        console.log(this.state.userInfo)
+
       } else if( social = 'naver'){
         console.log('여기는 스토어 actions naver',data)
         await axios.post("https://nunukang.shop/naver", data)
