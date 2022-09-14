@@ -36,32 +36,36 @@ export default {
 
             console.log("네이버로그인중2",window.naverLogin)
 
-            function test(){ return new Promise((resolve, reject) => { 
-                                        naverLogin.getLoginStatus(function(status) {
-                                            let self = this;
-                                            let info ={}
-                                            if (status) {
-                                                info = {
-                                                id: naverLogin.user.id,
-                                                age: naverLogin.user.age,
-                                                gender: naverLogin.user.gender,
-                                                nickname: naverLogin.user.nickname,
-                                                profile_image: naverLogin.user.profile_image,
-                                                }
-                                                console.log("네이버로그인중3",info)
-                                                resolve(info)
-                                            } else {
-                                                resolve('AccessToken이 올바르지 않습니다.') 
-                                            }
-                                        })  
-                                    })}
+            function getUserInfo(){ 
+                return new Promise(
+                    (resolve, reject) => { 
+                        naverLogin.getLoginStatus(function(status) {
+                            let self = this;
+                            let info ={}
+                            if (status) {
+                                info = {
+                                id: naverLogin.user.id,
+                                age: naverLogin.user.age,
+                                gender: naverLogin.user.gender,
+                                nickname: naverLogin.user.nickname,
+                                profile_image: naverLogin.user.profile_image,
+                                email: naverLogin.user.email
+                                }
+                                console.log("네이버로그인중3",info)
+                                resolve(info)
+                            } else {
+                                reject('AccessToken이 올바르지 않습니다.') 
+                            }
+                        })  
+                    })}
+
             test().then((data)=>{
                             console.log("네이버로그인5",data)
                             const social = 'naver'
                             this.$store.dispatch("userGetAction", {data, social});
                             this.$router.push({name:'home'})
                         }).catch((err)=>{
-
+                            console.log(err)
                         })
 
         
