@@ -31,7 +31,7 @@ export default {
         const naverLogin = await new naver.LoginWithNaverId({
             clientId: '2jr941k4E1YtJ1JN3Cw7'
             })
-            
+
         naverLogin.init()
 
         console.log("네이버로그인중2",window.naverLogin)
@@ -59,7 +59,7 @@ export default {
                     })  
                 })}
 
-        test().then((data)=>{
+        getUserInfo().then((data)=>{
                         console.log("네이버로그인5",data)
                         const social = 'naver'
                         this.$store.dispatch("userGetAction", {data, social});
