@@ -152,17 +152,21 @@
     },
 
     created(){
-      this.userId = this.$store.state.userInfo
+      
     },
     mounted(){
-      console.log(this.userId,this.$store.state.snackbarCookie)
-      if(this.userId & this.$store.state.cookie == 0){
-            this.snackbar = true
-            this.snackbarCookie()
+      getUserId()
+      console.log(this.userId,this.$store.state.userInfo,this.$store.state.snackbarCookie)
+      if(this.userId & this.$store.state.snackbarCookie == 0){
+          this.snackbar = true
+          this.snackbarCookie()
         }
     },
     methods: {
-            ...mapActions(['snackbarCookie','snackbarCookie']),
+      ...mapActions(['snackbarCookie','snackbarCookie']),
+      getUserId(){
+        this.userId = this.$store.state.userInfo.nickname
+      }
     },
   };
 </script>
