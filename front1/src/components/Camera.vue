@@ -121,7 +121,8 @@
                 formData.append('fish', capturedPhotoFile)
 
                 //잡은 물고기 location(위도, 경도)
-                this.getCurrentPosition();
+                await this.getCurrentPosition();
+                
                 let lat = this.latitude
                 let lng = this.longitude
 
