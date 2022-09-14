@@ -33,13 +33,13 @@ export default {
     },
 
     updated: async function () {
-        console.log('updated called:', this.fireCallback);
+        console.log('updated called:', this.data.fireCallback);
         // const data = await this.callbackNaver()
-        console.log("네이버로그인5", this.d)
+        console.log("네이버로그인5", this.data.d)
         const social = 'naver'
-        await this.$store.dispatch("userGetAction", {data:this.d, social});
+        await this.$store.dispatch("userGetAction", {data:this.data.d, social});
         this.$router.push({name:'home'})
-        this.fireCallback = false;
+        this.data.fireCallback = false;
     },
 
     methods:{
@@ -64,13 +64,14 @@ export default {
                     profile_image: naverLogin.user.profile_image,
                     }
                     console.log("네이버로그인중3",info)
-                    this.fireCallback = true;
-                    this.d = info
+                    console.log('this data:',this.data)
+                    this.data.fireCallback = true;
+                    this.data.d = info
                 } else {
                     console.log('AccessToken이 올바르지 않습니다.') 
                 }
             })  
-            console.log("네이버로그인중4", data)
+            // console.log("네이버로그인중4", data)
             // return data
         }
     }
