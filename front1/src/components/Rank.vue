@@ -23,7 +23,7 @@
           ></v-select>
         </v-col>
       </v-row>
-      <v-li v-for="list in rankList" :key="list.rank">{{list}}</v-li>
+      <v-list v-for="list in rankList" :key="list.rank">{{list}}</v-list>
     </v-card>
     </v-container>
 </template>

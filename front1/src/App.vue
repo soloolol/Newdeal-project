@@ -118,15 +118,13 @@
         style="height:35px;transform: rotate(25deg);"
       />
     </v-btn>
-    <template>
-      <v-snackbar
-        :value="snackbar"
-        :timeout="timeout"
-        rounded="pill"
-        >
-        환영합니다 ! <strong>{{ this.userId }}</strong> 님
-        </v-snackbar>
-    </template>
+    <v-snackbar
+      :value="snackbar"
+      :timeout="timeout"
+      rounded="pill"
+      >
+      환영합니다 ! <strong>{{ this.userId }}</strong> 님
+      </v-snackbar>
   </v-app>
 </template>
 
