@@ -174,6 +174,7 @@
                 } else {
 
                     navigator.geolocation.getCurrentPosition(pos => {
+                        console.log(pos.coords.latitude)
                         this.latitude = pos.coords.latitude;
                         this.longitude = pos.coords.longitude;
                     },this.geolocationError)
