@@ -39,6 +39,13 @@
 
     <v-main id="main" style="display: flex; justify-content: center;">
       <router-view/>
+      <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+      rounded="pill"
+      >
+      환영합니다 ! <strong>{{ this.userId }}</strong> 님
+    </v-snackbar>
     </v-main>
     
     <v-bottom-navigation
@@ -118,13 +125,6 @@
         style="height:35px;transform: rotate(25deg);"
       />
     </v-btn>
-    <v-snackbar
-      :value="snackbar"
-      :timeout="timeout"
-      rounded="pill"
-      >
-      환영합니다 ! <strong>{{ this.userId }}</strong> 님
-      </v-snackbar>
   </v-app>
 </template>
 
