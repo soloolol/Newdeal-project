@@ -36,28 +36,37 @@ export default {
 
             console.log("네이버로그인중2",window.naverLogin)
 
-        await naverLogin.getLoginStatus(async function(status) {
-            let self = this;
-            if (status) {
-                let info = {
-                id: await naverLogin.user.id,
-                age: await naverLogin.user.age,
-                gender: await naverLogin.user.gender,
-                nickname: await naverLogin.user.nickname,
-                profile_image: await naverLogin.user.profile_image,
-                }
-                console.log("네이버로그인중3",info)
-                const social = 'naver'
-                await self.$store.dispatch("userGetAction", {info, social});
-                self.$router.push({name:'home'})
-            } else {
-                console.log('AccessToken이 올바르지 않습니다.') 
-            }
-        })  
-        console.log("네이버로그인5", info)
-    },
+            function test(){ return new Promise((resolve, reject) => { 
+                                        naverLogin.getLoginStatus(function(status) {
+                                            let self = this;
+                                            let info ={}
+                                            if (status) {
+                                                info = {
+                                                id: naverLogin.user.id,
+                                                age: naverLogin.user.age,
+                                                gender: naverLogin.user.gender,
+                                                nickname: naverLogin.user.nickname,
+                                                profile_image: naverLogin.user.profile_image,
+                                                }
+                                                console.log("네이버로그인중3",info)
+                                                resolve(info)
+                                            } else {
+                                                resolve('AccessToken이 올바르지 않습니다.') 
+                                            }
+                                        })  
+                                    })}
+            test().then((data)=>{
+                            console.log("네이버로그인5",data)
+                            const social = 'naver'
+                            this.$store.dispatch("userGetAction", {data, social});
+                            this.$router.push({name:'home'})
+                        }).catch((err)=>{
 
+                        })
 
+        
+    }
+}
     // updated: async function () {
     //     console.log('updated called:', this.fireCallback);
     //     // const data = await this.callbackNaver()
@@ -68,5 +77,5 @@ export default {
     //     this.fireCallback = false;
     // },
 
-}
+// }
 </script>
