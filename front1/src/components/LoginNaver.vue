@@ -18,7 +18,7 @@ export default {
 
     async mounted(){
         // 네이버 사용자 프로필 조회
-        setTimeout(()=>{
+        setTimeout(async ()=>{
             const data =  await this.callbackNaver()
             console.log("네이버로그인5", data)
             const social = 'naver'
