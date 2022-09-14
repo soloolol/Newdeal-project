@@ -22,6 +22,9 @@ export default new Vuex.Store({
     },
     snackbarCookie : function(state) {
       state.snackbarCookie ++
+    },
+    snackbarCookieReset : function(state) {
+      state.snackbarCookie = 0
     }
   },
   actions: {
@@ -31,6 +34,10 @@ export default new Vuex.Store({
 
     snackbarCookie: function({commit}){
       commit('snackbarCookie')
+    },
+
+    snackbarCookieReset: function({commit}){
+      commit('snackbarCookieReset')
     },
 
     userGetAction: async function ({commit}, {data, social}) {

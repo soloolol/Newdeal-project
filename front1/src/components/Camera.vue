@@ -94,7 +94,7 @@
             },
  
             capture() {
-                const FLASH_TIMEOUT = 1000;
+                const FLASH_TIMEOUT = 200;
                 let self = this;
                 setTimeout(() => {
                     self.$refs.canvas.width = self.$refs.camera.videoWidth

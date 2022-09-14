@@ -112,6 +112,7 @@
           }else {
             this.googleLogOut()
           }
+          this.$store.dispatch('snackbarCookieReset')
           this.storeUserInfoReset()
           console.log(this.$store.state.userInfo)
         },

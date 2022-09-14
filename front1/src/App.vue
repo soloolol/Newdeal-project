@@ -153,7 +153,7 @@
     },
     mounted(){
       this.userId = this.$store.state.userInfo
-      if(this.userId & this.$store.state.cookie === 0){
+      if(this.userId & this.$store.state.cookie == 0){
             this.snackbar = true
             this.snackbarCookie()
         }
