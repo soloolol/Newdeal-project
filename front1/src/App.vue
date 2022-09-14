@@ -149,10 +149,10 @@
     },
 
     created(){
-
+      this.userId = this.$store.state.userInfo
     },
     mounted(){
-      this.userId = this.$store.state.userInfo
+      console.log(this.userId,this$store.state.cookie)
       if(this.userId & this.$store.state.cookie == 0){
             this.snackbar = true
             this.snackbarCookie()
