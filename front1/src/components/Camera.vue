@@ -74,7 +74,7 @@
 
             cameraStart(){
                 const front = false;
-                const constraints = { video: { width: 1280, height: 0, facingMode: (front? "user" : "environment") } };
+                const constraints = { video: { width: 640, height: 1280, facingMode: (front? "user" : "environment") } };
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(stream => {
                         this.$refs.camera.srcObject = stream;
@@ -92,7 +92,7 @@
             },
  
             capture() {
-                const FLASH_TIMEOUT = 100;
+                const FLASH_TIMEOUT = 200;
                 let self = this;
                 setTimeout(() => {
                     self.$refs.canvas.width = self.$refs.camera.videoWidth
@@ -121,9 +121,12 @@
 
                 //잡은 물고기 location(위도, 경도)
                 this.getCurrentPosition();
-                console.log('위도',this.positionObj.latitude)
-                formData.append('latitude', this.positionObj.latitude)
-                formData.append('longitude', this.positionObj.longitude)
+                let lat = this.positionObj.latitude
+                let lng = this.positionObj.longitude
+
+                console.log('위도',lat)
+                formData.append('latitude', lat)
+                formData.append('longitude', lng)
 
                 //Upload image api
                     //await this.axios.post('http://localhost:3000/matchFish/caculateData', formData,{
