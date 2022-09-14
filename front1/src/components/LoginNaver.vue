@@ -54,8 +54,9 @@ export default {
             console.log("네이버로그인중2",window.naverLogin)
 
             let data = '';   
-            let self = this;  
-            data = await naverLogin.getLoginStatus( function(status) {
+            let self = this;
+            console.log('this:',this)
+            data = await naverLogin.getLoginStatus(function(status) {
                 if (status) {
                     const info = {
                     id: naverLogin.user.id,
