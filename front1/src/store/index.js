@@ -41,7 +41,7 @@ export default new Vuex.Store({
     },
 
     userGetAction: async function ({commit}, {data, social}) {
-      if( social = 'kakao'){
+      if( social === 'kakao'){
         // console.log(social,data)
         // alert('여기는 스토어 actions kakao',data)
         const user = await axios.post("https://nunukang.shop/kakao", data)
@@ -56,7 +56,7 @@ export default new Vuex.Store({
         commit('userToState',user);
         console.log(this.state.userInfo)
 
-      } else if( social = 'naver'){
+      } else if( social === 'naver'){
         console.log('여기는 스토어 actions naver',data)
         await axios.post("https://nunukang.shop/naver", data)
         .then( res => {
