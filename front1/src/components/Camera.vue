@@ -121,7 +121,7 @@
 
                 //잡은 물고기 location(위도, 경도)
                 this.getCurrentPosition
-
+                console.log('위도',this.positionObj.latitude)
                 formData.append('latitude', this.positionObj.latitude)
                 formData.append('longitude', this.positionObj.longitude)
 
