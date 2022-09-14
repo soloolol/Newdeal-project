@@ -11,21 +11,30 @@ export default {
     name: "LoginNaver",
 
     data(){
-        return{
-
+        return {
+            fireCallback: false  
         }
     },
 
-    async mounted(){
-        // 네이버 사용자 프로필 조회
-        setTimeout(async ()=>{
-            const data =  await this.callbackNaver()
-            console.log("네이버로그인5", data)
-            const social = 'naver'
-            await this.$store.dispatch("userGetAction", {data, social});
-            this.$router.push({name:'home'})  
-        } 
-        ,1000);
+    // async mounted(){
+    //     if (this.fireCallback) {
+    //         // 네이버 사용자 프로필 조회
+    //         const data =  await this.callbackNaver()
+    //         console.log("네이버로그인5", data)
+    //         const social = 'naver'
+    //         await this.$store.dispatch("userGetAction", {data, social});
+    //         this.$router.push({name:'home'})
+    //     }
+    // },
+
+    updated: async function () {
+        console.log('updated called:', this.fireCallback);
+        const data = await this.callbackNaver()
+        console.log("네이버로그인5", data)
+        const social = 'naver'
+        await this.$store.dispatch("userGetAction", {data, social});
+        this.$router.push({name:'home'})
+        this.fireCallback = false;
     },
 
     methods:{
@@ -50,6 +59,7 @@ export default {
                     profile_image: naverLogin.user.profile_image,
                     }
                     console.log("네이버로그인중3",info)
+                    this.fireCallback = true;
                     return info
                 } else {
                     console.log('AccessToken이 올바르지 않습니다.') 
