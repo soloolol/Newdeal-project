@@ -18,8 +18,10 @@ export default {
 
     async mounted(){
         // 네이버 사용자 프로필 조회
-	    await this.callbackNaver()
-
+	    const data =  await this.callbackNaver()
+        console.log("네이버로그인5", data)
+        const social = 'naver'
+        await this.$store.dispatch("userGetAction", {data, social});
         this.$router.push({name:'home'})
     },
 
@@ -35,7 +37,7 @@ export default {
             console.log("네이버로그인중2",window.naverLogin)
 
             let data = '';
-            await naverLogin.getLoginStatus( async function(status) {
+            data = await naverLogin.getLoginStatus( function(status) {
                 if (status) {
                     const info = {
                     id: naverLogin.user.id,
@@ -44,14 +46,15 @@ export default {
                     nickname: naverLogin.user.nickname,
                     profile_image: naverLogin.user.profile_image,
                     }
-                    data = info
-                    console.log(data)
-                    const social = 'naver'
-                    await this.$store.dispatch("userGetAction", {data, social});
+
+                    console.log("네이버로그인중3",info)
+                    return info
                 } else {
                     console.log('AccessToken이 올바르지 않습니다.') 
                 }
             })
+            console.log("네이버로그인중4", data)
+            return data
         }
     }
 }
