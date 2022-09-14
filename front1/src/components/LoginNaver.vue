@@ -65,9 +65,9 @@ export default {
                     profile_image: naverLogin.user.profile_image,
                     }
                     console.log("네이버로그인중3",info)
-                    console.log('this data:',self.data)
                     self.data.fireCallback = true;
                     self.data.d = info
+                    console.log('this data:',self.data)
                 } else {
                     console.log('AccessToken이 올바르지 않습니다.') 
                 }
