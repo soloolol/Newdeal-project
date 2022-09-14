@@ -76,7 +76,7 @@
 
             cameraStart(){
                 const front = false;
-                const constraints = { video: { width: 320,height: 640, facingMode: (front? "user" : "environment") } };
+                const constraints = { video: { width: 320,height: 600, facingMode: (front? "user" : "environment") } };
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(stream => {
                         this.$refs.camera.srcObject = stream;

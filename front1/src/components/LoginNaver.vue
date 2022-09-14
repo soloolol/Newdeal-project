@@ -29,21 +29,41 @@ export default {
     // },
 
     mounted: async function () {
-        await this.callbackNaver();   
+        await this.callbackNaver();
+
+        await naverLogin.getLoginStatus(function(status) {
+            if (status) {
+                let info = {
+                id: naverLogin.user.id,
+                age: naverLogin.user.age,
+                gender: naverLogin.user.gender,
+                nickname: naverLogin.user.nickname,
+                profile_image: naverLogin.user.profile_image,
+                }
+                console.log("네이버로그인중3",info)
+            } else {
+                console.log('AccessToken이 올바르지 않습니다.') 
+            }
+        })  
+        console.log("네이버로그인5", info)
+        const social = 'naver'
+        await this.$store.dispatch("userGetAction", {info, social});
+        this.$router.push({name:'home'})
+
     },
 
-    updated: async function () {
-        console.log('updated called:', this.fireCallback);
-        // const data = await this.callbackNaver()
-        console.log("네이버로그인5", this.d)
-        const social = 'naver'
-        await this.$store.dispatch("userGetAction", {data:this.d, social});
-        this.$router.push({name:'home'})
-        this.fireCallback = false;
-    },
+    // updated: async function () {
+    //     console.log('updated called:', this.fireCallback);
+    //     // const data = await this.callbackNaver()
+    //     console.log("네이버로그인5", this.d)
+    //     const social = 'naver'
+    //     await this.$store.dispatch("userGetAction", {data:this.d, social});
+    //     this.$router.push({name:'home'})
+    //     this.fireCallback = false;
+    // },
 
     methods:{
-        async callbackNaver(){
+        callbackNaver(){
             console.log("네이버로그인중1",window.naverLogin)
 
             const naverLogin = new naver.LoginWithNaverId({
@@ -52,28 +72,6 @@ export default {
             naverLogin.init()
 
             console.log("네이버로그인중2",window.naverLogin)
-
-            let data = '';   
-            let self = this;
-            console.log('this:',this)
-            data = await naverLogin.getLoginStatus(function(status) {
-                if (status) {
-                    const info = {
-                    id: naverLogin.user.id,
-                    age: naverLogin.user.age,
-                    gender: naverLogin.user.gender,
-                    nickname: naverLogin.user.nickname,
-                    profile_image: naverLogin.user.profile_image,
-                    }
-                    console.log("네이버로그인중3",info)
-                    self.fireCallback = true;
-                    self.d = info
-                } else {
-                    console.log('AccessToken이 올바르지 않습니다.') 
-                }
-            })  
-            // console.log("네이버로그인중4", data)
-            // return data
         }
     }
 }
