@@ -69,6 +69,7 @@
         },
         mounted(){
             this.cameraStart()
+            this.getCurrentPosition()
         },
         methods: {
             ...mapActions(['fishTmpAction','snackbarCookie']),
@@ -121,14 +122,10 @@
                 formData.append('fish', capturedPhotoFile)
 
                 //잡은 물고기 location(위도, 경도)
-                await this.getCurrentPosition();
-                
-                let lat = this.latitude
-                let lng = this.longitude
-
-                console.log('위도',lat)
-                formData.append('latitude', lat)
-                formData.append('longitude', lng)
+    
+                console.log('위도',this.latitude)
+                formData.append('latitude', this.latitude)
+                formData.append('longitude', this.longitude)
 
                 //Upload image api
                     //await this.axios.post('http://localhost:3000/matchFish/caculateData', formData,{
