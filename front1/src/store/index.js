@@ -46,8 +46,9 @@ export default new Vuex.Store({
         alert('여기는 스토어 actions kakao',data)
         await axios.post("https://nunukang.shop/kakao", data)
         .then( res => {
-          console.log(res.data); //displayName : 닉네임
+          alert(res.data); //displayName : 닉네임
           commit('userToState',res.data);
+          alert('커밋도됨?',this.state.userInfo)
         }).catch( err => {
           console.log(err)
         })
