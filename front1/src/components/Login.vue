@@ -64,7 +64,7 @@
       mounted(){
         console.log(this.$store.state.userInfo)
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
-        console.log('네이버로그인되어음',window.naverLogin)
+        console.log('네이버로그인되어음',window.naverLogin.getLoginStatus())
         if (window.Kakao.Auth.getAccessToken() || window.naverLogin) {
           this.login = true;
         }else {
