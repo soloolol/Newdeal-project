@@ -53,7 +53,8 @@ export default {
 
             console.log("네이버로그인중2",window.naverLogin)
 
-            let data = '';     
+            let data = '';   
+            let self = this;  
             data = await naverLogin.getLoginStatus( function(status) {
                 if (status) {
                     const info = {
@@ -64,9 +65,9 @@ export default {
                     profile_image: naverLogin.user.profile_image,
                     }
                     console.log("네이버로그인중3",info)
-                    console.log('this data:',this.data)
-                    this.data.fireCallback = true;
-                    this.data.d = info
+                    console.log('this data:',self.data)
+                    self.data.fireCallback = true;
+                    self.data.d = info
                 } else {
                     console.log('AccessToken이 올바르지 않습니다.') 
                 }
