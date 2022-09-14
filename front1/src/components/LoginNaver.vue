@@ -40,11 +40,11 @@ export default {
             let self = this;
             if (status) {
                 let info = {
-                id: naverLogin.user.id,
-                age: naverLogin.user.age,
-                gender: naverLogin.user.gender,
-                nickname: naverLogin.user.nickname,
-                profile_image: naverLogin.user.profile_image,
+                id: await naverLogin.user.id,
+                age: await naverLogin.user.age,
+                gender: await naverLogin.user.gender,
+                nickname: await naverLogin.user.nickname,
+                profile_image: await naverLogin.user.profile_image,
                 }
                 console.log("네이버로그인중3",info)
                 const social = 'naver'
@@ -56,6 +56,7 @@ export default {
         })  
         console.log("네이버로그인5", info)
     },
+
 
     // updated: async function () {
     //     console.log('updated called:', this.fireCallback);
