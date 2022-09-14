@@ -165,11 +165,11 @@
     methods: {
       ...mapActions(['snackbarCookie','snackbarCookie']),
       getUserId(){
-        if(this.$store.state.userInfo.nickname){
+        if(!this.$store.state.userInfo.nickname){
           this.userId = this.$store.state.userInfo.nickname
         }
       },
-      
+
     },
   };
 </script>
