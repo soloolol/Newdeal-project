@@ -1,6 +1,17 @@
 
 <template>
     <v-container>
+        <v-snackbar
+            v-model="snackbar"
+            :timeout="timeout"
+            shaped
+            color="primary"
+            style="height: 50px; opacity: 85%; margin-top: 100px;"
+            text
+            top
+        >
+            환영합니다 ! <strong>{{ this.userId }}</strong> 님
+        </v-snackbar>
         <v-card       
         light
         class="mx-auto pa-2"
@@ -57,11 +68,12 @@
         data() {
             return {
                 isCameraOpen: false,
-                timeout: 1200,
+                timeout: 1500,
                 items: [], 
-                // snackbar: false,
+                snackbar: false,
                 latitude:null,
                 longitude:null,
+                userId: '',
             }
         },
         created(){
@@ -70,6 +82,12 @@
         mounted(){
             this.cameraStart()
             this.getCurrentPosition()
+            this.getUserId()
+            console.log('camera:', this.userId, this.$store.state.userInfo, this.$store.state.snackbarCookie)
+            if(this.userId && this.$store.state.snackbarCookie == 0){
+                this.snackbar = true
+                this.snackbarCookie()
+            }
         },
         methods: {
             ...mapActions(['fishTmpAction','snackbarCookie']),
@@ -182,6 +200,12 @@
                 console.log('위치 정보 찾을 수 없음')
                 this.latitude = 0
                 this.longitude = 0
+            },
+
+            getUserId(){
+                if(this.$store.state.userInfo){
+                    this.userId = this.$store.state.userInfo.nickname
+                }
             },
         
 
