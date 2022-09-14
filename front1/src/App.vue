@@ -155,7 +155,7 @@
       
     },
     mounted(){
-      getUserId()
+      this.getUserId()
       console.log(this.userId,this.$store.state.userInfo,this.$store.state.snackbarCookie)
       if(this.userId & this.$store.state.snackbarCookie == 0){
           this.snackbar = true
