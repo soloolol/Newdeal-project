@@ -12,7 +12,8 @@ export default {
 
     data(){
         return {
-            fireCallback: false  
+            fireCallback: false,
+            d: {}
         }
     },
 
@@ -27,12 +28,16 @@ export default {
     //     }
     // },
 
+    mounted: async function () {
+        await this.callbackNaver();   
+    },
+
     updated: async function () {
         console.log('updated called:', this.fireCallback);
-        const data = await this.callbackNaver()
-        console.log("네이버로그인5", data)
+        // const data = await this.callbackNaver()
+        console.log("네이버로그인5", this.d)
         const social = 'naver'
-        await this.$store.dispatch("userGetAction", {data, social});
+        await this.$store.dispatch("userGetAction", {data:this.d, social});
         this.$router.push({name:'home'})
         this.fireCallback = false;
     },
@@ -60,13 +65,13 @@ export default {
                     }
                     console.log("네이버로그인중3",info)
                     this.fireCallback = true;
-                    return info
+                    this.d = info
                 } else {
                     console.log('AccessToken이 올바르지 않습니다.') 
                 }
             })  
             console.log("네이버로그인중4", data)
-            return data
+            // return data
         }
     }
 }
