@@ -7,16 +7,16 @@
       max-width="400"
       align-items="center"
     >
-      <v-row justify-content="center">
+      <v-row justify="center">
         <v-col cols="12">
-          <v-row justify-content="center" class="mb-10">
+          <v-row justify="center" class="mb-10">
             <v-card-title>LOGIN</v-card-title>
           </v-row>
-          <v-row justify-content="center" class="mb-10">
+          <v-row justify="center" class="mb-10">
             <!-- <div id="naverIdLogin"></div> -->
             <v-btn text elevation="0" @click="loginWithNaver"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="222"/></v-btn>
           </v-row>
-          <v-row justify-content="center" class="mb-10">
+          <v-row justify="center" class="mb-10">
             <v-btn text elevation="0" @click="loginWithKakao"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></v-btn>
           </v-row>
         </v-col>
@@ -39,10 +39,10 @@
           alt="userProfile"
         >
       </v-avatar>
-      <v-title justify-content="center" text-align="center" align-items="center">{{this.userInfo.nickname}}</v-title>
-      <v-row justify-content="center">
+      <v-title justify="center" text-align="center" align-items="center">{{this.userInfo.nickname}}</v-title>
+      <v-row justify="center">
         <v-col cols="12">
-          <v-row justify-content="center" class="mb-10">
+          <v-row justify="center" class="mb-10">
             <v-btn color="blue-grey" class="ma-2 white--text" @click="logOut">로그아웃</v-btn>
           </v-row>
         </v-col>
