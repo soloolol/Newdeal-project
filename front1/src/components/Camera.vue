@@ -5,9 +5,8 @@
             v-model="snackbar"
             :timeout="timeout"
             shaped
-            dark
             color="black"
-            style="height: 50px; opacity: 85%; margin-top: 100px; z-index: 20000;"
+            style="color:#FFFFFF; height:50px; opacity: 85%; margin-top: 100px; z-index: 20000;"
             text
             top
         >
