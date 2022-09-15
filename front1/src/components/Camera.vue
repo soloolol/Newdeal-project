@@ -77,7 +77,7 @@
                     </span>
                     <img :src="require('../assets/camera.png')" style="width: 100px;margin: 20px;">
                     <div id="sample_t" class="bold">예시 사진</div>
-                    <img class="fish_sample" :src="require('../assets/edited.jpeg')" >
+                    <img class="fish_sample" :src="require('../assets/감성돔.jpg')" >
                     <br> 
                     <v-row class="mb-4">
                     <v-col cols="12" justify="center" class="mb-10">
