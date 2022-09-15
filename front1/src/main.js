@@ -5,15 +5,18 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueGeolocation from 'vue-geolocation-api'
+import VueCookies from 'vue-cookies'
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.use(VueGeolocation)
+Vue.use(VueCookies)
 
 
 const kakaoKey = 'fae1a098029cf35226952ad2c245221a'
 window.Kakao.init(kakaoKey);
 
+Vue.$cookies.config("1d")
 
 new Vue({
   router,
