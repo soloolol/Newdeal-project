@@ -5,7 +5,8 @@
             v-model="snackbar"
             :timeout="timeout"
             shaped
-            
+            dark
+            color="black"
             style="height: 50px; opacity: 85%; margin-top: 100px; z-index: 20000;"
             text
             top
@@ -110,7 +111,7 @@
         data() {
             return {
                 isCameraOpen: false,
-                timeout: 2000,
+                timeout: 3500,
                 items: [], 
                 snackbar: false,
                 latitude:null,
