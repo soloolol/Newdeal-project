@@ -20,12 +20,12 @@
       </v-row>
 
       <v-card v-if="data">
-        <v-text-card v-for="(value, index) in data" 
+        <v-text-card v-for="(value, index) in data._source" 
           :key="index"
           :ref="`card_${index}`"
           class="card"
         >
-        {{value._source}}
+        {{value}}
         </v-text-card>
       </v-card>
 
