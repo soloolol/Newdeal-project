@@ -20,13 +20,9 @@
       </v-row>
 
       <v-card v-if="data">
-        <v-text-card v-for="(value, index) in data._source" 
-          :key="index"
-          :ref="`card_${index}`"
-          class="card"
-        >
-        {{value}}
-        </v-text-card>
+        <v-card v-for="(value, index) in data" :key="index">
+        {{value._source}}
+        </v-card>
       </v-card>
 
   </v-container>
@@ -45,7 +41,7 @@
       search() {
         this.axios.get("https://nunukang.shop/search?q=" + this.query)
               .then(resp => {
-                console.log(resp.data);
+                console.log(resp.data._source);
                 this.data = resp.data;
           })
       }
