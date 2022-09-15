@@ -46,7 +46,8 @@
             />
         </v-btn>
 
-        <div refs="pop" id="pop" :style="popDisplay">
+        
+        <div v-if="!checkPopUpCookies" refs="pop" id="pop" :style="popDisplay">
             <v-card class="guide_box mx-auto" >
                 <div class="guide">
                     <span>누가 누가 강태공</span>
@@ -114,7 +115,8 @@
                 latitude:null,
                 longitude:null,
                 userId: '',
-                popDisplay:"display: flex;"
+                popDisplay:"display: flex;",
+                checkPopUpCookies : false
             }
         },
         created(){
@@ -129,6 +131,9 @@
                 this.snackbar = true
                 this.snackbarCookie()
             }
+
+            if(this.$cookies.isKey("CameraPopUp"))
+                this.checkPopUpCookies = true
         },
         methods: {
             ...mapActions(['fishTmpAction','snackbarCookie']),
@@ -252,7 +257,8 @@
                 this.popDisplay= "display: none;";
             },
             todayCloseWin(){
-                
+                this.$cookies.set("CameraPopUp", "todayClose")
+                this.popClose()
             }
 
         }
