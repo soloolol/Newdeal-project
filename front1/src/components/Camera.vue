@@ -191,6 +191,14 @@
                 formData.append('latitude', this.latitude)
                 formData.append('longitude', this.longitude)
 
+                //userId 함께 보내기
+                if(this.userId.id){
+                    console.log('위도',this.userId.id)
+                    formData.append('userId', this.userId.id)
+                }else{
+                    formData.append('userId', 'geust')
+                }
+
                 //Upload image api
                     //await this.axios.post('http://localhost:3000/matchFish/caculateData', formData,{
                     await this.axios.post('https://nunukang.shop/matchFish/caculateData', formData, {
