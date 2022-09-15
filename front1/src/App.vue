@@ -183,7 +183,7 @@
       return {
         value: 1,
         active: true,
-        popDisplay:"display: flex;"
+        // popDisplay:"display: flex;"
       }
     },
 

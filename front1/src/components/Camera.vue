@@ -49,7 +49,7 @@
         </v-btn>
 
         <div refs="pop" id="pop" :style="popDisplay">
-            <v-card class="guide_box" >
+            <v-card class="guide_box mx-auto" >
                 <div class="guide">
                     <span>누가 누가 강태공</span>
                     <div class="bold" id="guide_title">즐거움으로 연결된<br>낚시인들의 길이배틀 그라운드,<br>누누강</div>
@@ -116,6 +116,7 @@
                 latitude:null,
                 longitude:null,
                 userId: '',
+                popDisplay:"display: flex;"
             }
         },
         created(){
