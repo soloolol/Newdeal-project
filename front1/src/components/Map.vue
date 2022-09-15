@@ -29,6 +29,7 @@
       centerMarker : null,
       map : null,
       markers : [],
+      markersWindow : [],
       customOverlay : [],
     }},
 
@@ -45,18 +46,51 @@
 
         document.head.appendChild(script)
       }
-
     },
 
     methods:{
-      initMap(){
+
+      getLocation(){
+        return new Promise(resolve=>{
+          navigator.geolocation.getCurrentPosition(function(pos){
+
+            //geolocation 권한이 존재할 경우, 현재위치를 가져옴
+            let location = {}
+
+            location.latitude = pos.coords.latitude
+            location.longitude = pos.coords.longitude
+
+            return resolve(location)
+          },function(error){
+
+            //geolocation 권한이 존재하지않을 경우, 기본값을 전달
+            let location = {'latitude' : 33.450701, 'longitude' : 126.570667}
+            return resolve(location)
+          })
+        })
+      },
+
+
+      async initMap(){
         //맵 초기화
+        //기본 위치 데이터, geolocation사용불가능할때 사용
+        let location = {'latitude' : 33.450701, 'longitude' : 126.570667}
+
+        //geolocation이 할당되어있다면 실행, 권한여부 상관하지않음
+        if(navigator.geolocation)
+        {
+          //geolocation.getCurrentPosition이 비동기함수로 동작, 동기화를 위해 Promise 사용
+          location = await this.getLocation()
+        }
+
+        //맵을 할당할 위치와 지도 초기위치를 설정
         const container = document.getElementById("map")
         const options = {
-          center : new kakao.maps.LatLng(33.450701, 126.570667),
+          center : new kakao.maps.LatLng(location.latitude, location.longitude),
           level : 8,
         }
 
+        //카카오지도API를 활용해서 지도 생성
         this.map = new kakao.maps.Map(container, options)
         
         //중앙을 표시하는 마커 생성(데이터 불러올 공간의 중심점)
@@ -68,13 +102,6 @@
       },
 
       async setMarker(){
-        //임시 마커 데이터
-        let markerPositions = [
-          [33.452278, 126.567803],
-          [33.452671, 126.574792],
-          [33.451744, 126.572441],
-        ]
-
         //맵 중심데이터 가져오기, express로 전송
         let centerData = this.map.getCenter()
         let getData
@@ -88,10 +115,15 @@
         .catch(function(error){
           if(error) throw error
         })
-        console.log(getData)
 
-        //마커를 담을 공간 + 기존 마커 초기화(메모리 확인필요)
+        //마커를 담을 공간 + 기존 마커 초기화(메모리 확인필요), 할당된 인포윈도우도 초기화
+        for(let i=0;i<this.markers.length;i++)
+        {
+          this.markersWindow[i].close()
+          this.markers[i].setMap(null)
+        }
         this.markers = []
+        this.markersWindow = []
 
         //카카오 지도 마커 공통 이미지 설정
         let imageSize = new kakao.maps.Size(30,30)
@@ -101,15 +133,14 @@
         {
           //카카오 지도 마커 개별 마커 이미지 설정
           let imageSrc = 'data:image/jpg;base64,' + getData[i].image
-          console.log(imageSrc)
+
           let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
           //카카오 지도 개별 마커 위치 설정
           //let position = new kakao.maps.LatLng(...markerPositions[i])
           let position = new kakao.maps.LatLng(getData[i].latitude, getData[i].longitude)
 
-          console.log(position)
-          //카카오 지도 마커 표시
+          //카카오 지도 마커 표시 + 마커 객체 저장
           this.markers.push(new kakao.maps.Marker({
             map : this.map,
             position : position,
@@ -117,15 +148,21 @@
           }))
          
           //인포윈도우 방식
-          let infoWindowContent = '<div>' + getData[i].fishType + ' ' +getData[i].fishLength +'</div>'
+          //인포윈도우 초기화
+          let infoWindowContent = '<div">' + getData[i].fishType + ' ' +getData[i].fishLength +'</div>'
           let infoWindowPosition = new kakao.maps.LatLng(position)
 
+          //인포윈도우 생성
           let infoWindow = new kakao.maps.InfoWindow({
             position : infoWindowPosition,
             content : infoWindowContent
           })
 
+          //인포윈도우 지도에 표시
           infoWindow.open(this.map, this.markers[i])
+
+          //인도윈도우 객체를 관리하기 위한 저장
+          this.markersWindow.push(infoWindow)
 
           // //오버레이 방식
           // let content = document.createElement('div')
@@ -159,23 +196,15 @@
 
           //     this.customOverlay[i].data.setMap(this.map)
           //   }
-            
           // })
-          
-          
         }
-
       },
 
       mapClick(){
-        
         //맵 클릭시 마커를 중앙으로 이동
-        console.log('map click')
         let latlng = this.map.getCenter()
         this.centerMarker.setPosition(latlng)
       },
-
-
     }
   }
 </script>
