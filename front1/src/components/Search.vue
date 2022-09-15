@@ -43,7 +43,7 @@
     },
     methods: {
       search() {
-        axios.get("https://nunukang.shop/search?q=" + this.query)
+        this.axios.get("https://nunukang.shop/search?q=" + this.query)
               .then(resp => {
                 console.log(resp.data);
                 this.data = resp.data;
