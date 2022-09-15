@@ -119,7 +119,7 @@
       />
     </v-btn>
 
-    <div refs="pop" id="pop" :style="popDisplay">
+    <!-- <div refs="pop" id="pop" :style="popDisplay">
         <v-card class="guide_box" >
             <div class="guide">
                 <span>누가 누가 강태공</span>
@@ -165,7 +165,7 @@
                 </v-row>
             </div>
         </v-card>
-    </div>
+    </div> -->
   </v-app>
 </template>
 
@@ -206,18 +206,18 @@
           this.userId = this.$store.state.userInfo.nickname
         }
       },
-      popClose(){
-        this.popDisplay= "display: none;";
-      },
-      todayCloseWin(){
+      // popClose(){
+      //   this.popDisplay= "display: none;";
+      // },
+      // todayCloseWin(){
         
-      }
+      // }
     },
   };
 </script>
 
 <style scoped>
-  #pop{
+  /* #pop{
       position: fixed;
       flex-direction: column;
       text-align: center;
@@ -275,8 +275,6 @@
       
   }
 
-  /*버튼*/
-
   .w-btn-blue{
     position: relative;
     border: none;
@@ -311,6 +309,6 @@
         width: 95%;
         height: 95%;
     }
-  }
+  } */
 
 </style>
