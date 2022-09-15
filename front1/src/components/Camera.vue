@@ -5,9 +5,7 @@
             v-model="snackbar"
             :timeout="timeout"
             shaped
-            color="black"
-            style="color:#FFFFFF; height:50px; opacity: 85%; margin-top: 100px; z-index: 20000;"
-            text
+            style="height:50px; opacity: 85%; margin-top: 100px; z-index: 20000;"
             top
         >
             환영합니다 ! <strong>{{ this.userId }}</strong> 님
