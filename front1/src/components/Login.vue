@@ -30,7 +30,7 @@
       max-width="400"
       align-items="center"
     >
-      <v-avatar size="110" color="red" v-if="this.userInfo.thumbnail===null">
+      <!-- <v-avatar size="110" color="red" v-if="this.userInfo.thumbnail===null">
         <v-icon dark>mdi-account-circle</v-icon>
       </v-avatar>
       <v-avatar size="110" color="orange" v-else>
@@ -39,7 +39,7 @@
           alt="userProfile"
         >
       </v-avatar>
-      <v-title justify="center" text-align="center" align-items="center">{{this.userInfo.nickname}}</v-title>
+      <v-title justify="center" text-align="center" align-items="center">{{this.userInfo.nickname}}</v-title> -->
       <v-row justify="center">
         <v-col cols="12">
           <v-row justify="center" class="mb-10">
