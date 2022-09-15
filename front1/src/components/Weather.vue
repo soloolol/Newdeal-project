@@ -188,25 +188,31 @@
     async mounted(){
       let sendData = {location : this.locationEndSelect}
 
-      await this.axios.post('http://localhost:3000/weather/dailyWeather',sendData)
-      //await this.axios.post("https://nunukang.shop/weather/dailyWeather",sendData)
+      //await this.axios.post('http://localhost:3000/weather/dailyWeather',sendData)
+      await this.axios.post("https://nunukang.shop/weather/dailyWeather",sendData)
         .then(resp => {
           this.currnetLocationWeatherData = resp.data
         })
         .catch(err => {
           if(err) throw err
-        })
+      })
 
+      //0번데이터는 오늘 날씨데이터, 오전 또는 오후 데이터
       this.todayWeatherData = this.currnetLocationWeatherData[0]
     },
 
     methods:{
+
+      //상위 지역정보를 설정하는 이벤트 함수, 하위 지역정보를 추가로 설정하는 함수를 호출 후 종료
       changeLocationFront(){
+
 
         for(let i=0;i<this.locationFront.length;i++)
         {
           if(this.locationFrontSelect == this.locationFront[i])
           {
+            //선택한 상위지역의 첫번째 하위 지역정보를 설정
+            //해당과정이 없으면 하위 select박스 내용이 공란으로 처리됨
             this.locationEndIndex = i
             this.locationEndSelect = this.locationEnd[i][0]
             this.changeLocationEnd()
@@ -215,12 +221,13 @@
         }
       },
 
+      //하위 지역정보를 설정하는 이벤트 함수, 서버에서 직접 필요한 데이터를 요청
       async changeLocationEnd(){
 
         let sendData = {location : this.locationEndSelect}
 
-        await this.axios.post('http://localhost:3000/weather/dailyWeather',sendData)
-        //await this.axios.post("https://nunukang.shop/weather/dailyWeather",sendData)
+        //await this.axios.post('http://localhost:3000/weather/dailyWeather',sendData)
+        await this.axios.post("https://nunukang.shop/weather/dailyWeather",sendData)
           .then(resp => {
             this.currnetLocationWeatherData = resp.data
           })
@@ -228,11 +235,13 @@
             if(err) throw err
           })
 
+          //html v-for문에서 키값으로 활용하기 위해서 index 할당, 실제로 노출될 데이터는 아님
           for(let i=0;i<this.currnetLocationWeatherData.length;i++)
           {
             this.currnetLocationWeatherData.index = i
           }
 
+          //0번데이터는 오늘 날씨데이터, 오전 또는 오후 데이터
           this.todayWeatherData = this.currnetLocationWeatherData[0]
 
       },

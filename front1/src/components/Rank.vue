@@ -70,7 +70,7 @@
     async mounted(){
       let sendData = {fishType : this.selected}
 
-      // await this.axios.post('http://localhost:3000/rank/fish',sendData)
+      //await this.axios.post('http://localhost:3000/rank/fish',sendData)
       await this.axios.post("https://nunukang.shop/rank/fish",sendData)
         .then(resp => {
           this.rankList=resp.data
@@ -84,7 +84,7 @@
       async getRankData(){
         let sendData = {fishType : this.selected}
 
-        // await this.axios.post('http://localhost:3000/rank/fish',sendData)
+        //await this.axios.post('http://localhost:3000/rank/fish',sendData)
         await this.axios.post("https://nunukang.shop/rank/fish",sendData)
         .then(resp => {
           this.rankList = resp.data
