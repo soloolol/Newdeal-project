@@ -24,7 +24,7 @@
     </v-card>
 
     <v-card
-      v-if="login"
+      v-else
       light
       class="mx-auto pa-2"
       max-width="400"
