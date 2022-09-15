@@ -31,6 +31,7 @@
           <v-col cols="3" sm="6">길이</v-col>
           <v-col cols="2" sm="6">등급</v-col>
         </v-row>
+        <v-divider></v-divider>
       </v-list>
       <v-list v-for="list in rankList" :key="list.rank" style="text-align:center;">
         <v-row>
@@ -45,7 +46,7 @@
               >
             </v-avatar>
           </v-col>
-          <v-col cols="3" sm="6">{{list.ID}}</v-col>
+          <v-col cols="3" sm="6">{{list.id}}</v-col>
           <v-col cols="3" sm="6">{{list.length}}cm</v-col>
           <v-col cols="2" sm="6">{{list.grade}}</v-col>
         </v-row>  
