@@ -94,36 +94,41 @@
         
         logOut(){
           if(window.Kakao.Auth.getAccessToken()){
-            console.log(this.$store.state.userInfo)
-            console.log('1')
-            this.kakaoLogOut()
-    
+            console.log('카카오로그아웃');
+            this.kakaoLogOut();
+            console.log(this.$store.state.userInfo);
           }else{
-            console.log(this.$store.state.userInfo)
-            console.log('2')
-            this.naverLogOut()
+            console.log('네이버로그아웃');
+            this.naverLogOut();
+            console.log(this.$store.state.userInfo);
           }
         },
 
         storeUserInfoReset(){
-          this.$store.commit('userToState',null)
+          this.$store.commit('userToState',null);
         },
 
+        snackbarCookieReset(){
+          this.$store.dispatch('snackbarCookieReset');
+        },
 
         // 로그아웃
-        kakaoLogOut(){
-          // console.log('4')
-          window.Kakao.Auth.logout()
-          this.$store.dispatch('snackbarCookieReset')
-          this.storeUserInfoReset()
-          alert('로그아웃 되었습니다.',this.$store.state.userInfo)
+        async kakaoLogOut(){
+          await window.Kakao.Auth.logout();
+          this.snackbarCookieReset();
+          this.storeUserInfoReset();
+          alert('로그아웃 되었습니다.',this.$store.state.userInfo);
           this.$router.push({name:'home'});
         },
 
-        naverLogOut(){
-          // window.naverLogin.logout();
-          this.$store.dispatch('snackbarCookieReset')
-          this.storeUserInfoReset()
+        async naverLogOut(){
+          const naverLogin = await new naver.LoginWithNaverId({
+            clientId: '2jr941k4E1YtJ1JN3Cw7'
+            });
+          await naverLogin.init();
+          await naverLogin.logout();
+          this.snackbarCookieReset();
+          this.storeUserInfoReset();
           alert('로그아웃 되었습니다.', this.$store.state.userInfo);
           this.$router.push({name:'home'});
         },

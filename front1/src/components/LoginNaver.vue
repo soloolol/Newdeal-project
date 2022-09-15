@@ -16,16 +16,6 @@ export default {
         }
     },
 
-    // async mounted(){
-    //     if (this.fireCallback) {
-    //         // 네이버 사용자 프로필 조회
-    //         const data =  await this.callbackNaver()
-    //         console.log("네이버로그인5", data)
-    //         const social = 'naver'
-    //         await this.$store.dispatch("userGetAction", {data, social});
-    //         this.$router.push({name:'home'})
-    //     }
-    // },
 
     mounted: async function () {
         const naverLogin = await new naver.LoginWithNaverId({
@@ -57,28 +47,22 @@ export default {
                             reject('AccessToken이 올바르지 않습니다.') 
                         }
                     })  
-                })}
+                }
+            )
+        }
 
-        getUserInfo().then((data)=>{
-                        console.log("네이버로그인5",data)
-                        const social = 'naver'
-                        this.$store.dispatch("userGetAction", {data, social});
-                        this.$router.push({name:'home'})
+        await getUserInfo()
+                .then(async (data)=>{
+                    console.log("네이버로그인5",data)
+                    const social = 'naver'
+                    await this.$store.dispatch("userGetAction", {data, social});
+                    this.$router.push({name:'home'})
                     }).catch((err)=>{
                         console.log(err)
-                    }
-                )
+                        } 
+                    )
+        
     }
 }
-    // updated: async function () {
-    //     console.log('updated called:', this.fireCallback);
-    //     // const data = await this.callbackNaver()
-    //     console.log("네이버로그인5", this.d)
-    //     const social = 'naver'
-    //     await this.$store.dispatch("userGetAction", {data:this.d, social});
-    //     this.$router.push({name:'home'})
-    //     this.fireCallback = false;
-    // },
 
-// }
 </script>
