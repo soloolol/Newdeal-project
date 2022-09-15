@@ -77,8 +77,8 @@
           this.login = true;
         }else {
           this.login = false;
+          this.getUserId();
         };
-        this.getUserId();
       },
 
    
