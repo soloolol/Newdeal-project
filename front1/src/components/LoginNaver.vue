@@ -52,15 +52,15 @@ export default {
         }
 
         await getUserInfo()
-                .then((data)=>{
+                .then(async (data)=>{
                     console.log("네이버로그인5",data)
                     const social = 'naver'
-                    this.$store.dispatch("userGetAction", {data, social});
+                    await this.$store.dispatch("userGetAction", {data, social});
+                    this.$router.push({name:'home'})
                     }).catch((err)=>{
                         console.log(err)
                         } 
                     )
-        this.$router.push({name:'home'})
         
     }
 }
