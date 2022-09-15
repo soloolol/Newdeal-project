@@ -25,18 +25,18 @@
       </v-row>
       <v-list style="text-align:center;">
         <v-row style="font-weight:500;">
-          <v-col style="display:flex; align-items:center;" cols="2" sm="6">순위</v-col>
-          <v-col style="display:flex; align-items:center;" cols="2" sm="6"></v-col>
-          <v-col style="display:flex; align-items:center;" cols="3" sm="6">ID</v-col>
-          <v-col style="display:flex; align-items:center;" cols="3" sm="6">길이</v-col>
-          <v-col style="display:flex; align-items:center;" cols="2" sm="6">등급</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="2" sm="6">순위</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="2" sm="6"></v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="3" sm="6">ID</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="3" sm="6">길이</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="2" sm="6">등급</v-col>
         </v-row>
         <v-divider></v-divider>
       </v-list>
       <v-list v-for="list in rankList" :key="list.rank" style="text-align:center;">
         <v-row>
-          <v-col style="display:flex; align-items:center;" cols="2" sm="6">{{list.rank}}</v-col>
-          <v-col style="display:flex; align-items:center;" cols="2" sm="6">
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="2" sm="6">{{list.rank}}</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="2" sm="6">
             <v-avatar color="red" v-if="list.thumbnail===null">
               <v-icon dark>mdi-account-circle</v-icon>
             </v-avatar>
@@ -46,9 +46,9 @@
               >
             </v-avatar>
           </v-col>
-          <v-col style="display:flex; align-items:center;" cols="3" sm="6">{{list.id}}</v-col>
-          <v-col style="display:flex; align-items:center;" cols="3" sm="6">{{list.length}}cm</v-col>
-          <v-col style="display:flex; align-items:center;" cols="2" sm="6">{{list.grade}}</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="3" sm="6">{{list.id}}</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="3" sm="6">{{list.length}}cm</v-col>
+          <v-col style="display:flex; align-items:center; text-align: center;" cols="2" sm="6">{{list.grade}}</v-col>
         </v-row>  
       </v-list>
     </v-card>
