@@ -29,7 +29,7 @@
         <v-row align="center">
           <v-col
             style="display:flex; align-items:center; justify-content: center;"
-            class="text-h4"
+            class="text-h5"
             cols="6"
           >
             {{todayWeatherData.day}} {{todayWeatherData.weather}}
@@ -78,7 +78,7 @@
 
       <v-list-item>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >풍속</v-list-item-subtitle>
-        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >{{todayWeatherData.windSpeed}}</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >{{todayWeatherData.windSpeed}}m/s</v-list-item-subtitle>
       </v-list-item>
 
       <v-list-item>
@@ -88,7 +88,7 @@
 
       <v-list-item>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">파고</v-list-item-subtitle>
-        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">{{todayWeatherData.seaHeight}}</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">{{todayWeatherData.seaHeight}}m</v-list-item-subtitle>
       </v-list-item>
 
       <v-list class="transparent">
