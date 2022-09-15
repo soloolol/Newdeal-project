@@ -68,7 +68,7 @@
         data() {
             return {
                 isCameraOpen: false,
-                timeout: 1500,
+                timeout: 2000,
                 items: [], 
                 snackbar: false,
                 latitude:null,

@@ -42,45 +42,31 @@ export default new Vuex.Store({
 
     userGetAction: async function ({commit}, {data, social}) {
       if( social === 'kakao'){
-        // console.log(social,data)
-        // alert('여기는 스토어 actions kakao',data)
         await axios.post("https://nunukang.shop/kakao", data)
         .then( res => {
-          console.log(res.data); //displayName : 닉네임
+          console.log(res.data); //id: , nickname: , thumbnail:
           commit('userToState',res.data);
-          // console.log('커밋도됨?',this.state.userInfo);
           console.log(this.state.userInfo);
         }).catch( err => {
           console.log(err)
         })
 
-      } else if( social === 'naver'){
+      } else {
         console.log('여기는 스토어 actions naver',data)
         await axios.post("https://nunukang.shop/naver", data)
         .then( res => {
-          console.log(res.data); //displayName : 닉네임
+          console.log('네이버axios응답값:',res.data); //id: , nickname: , thumbnail:
           commit('userToState',res.data);
-          console.log(this.state.userInfo);
+          console.log('state.userInfo:',this.state.userInfo);
         }).catch( err => {
           console.log(err)
         })
-      } else {
-        console.log('여기는 스토어 actions google',data)
-        await axios.post("https://nunukang.shop/google", data)
-        .then( res => {
-          console.log(res.data); //displayName : 닉네임
-          commit('userToState',res.data);
-        }).catch( err => {
-          console.log(err)
-        })
-      }
+      } 
 
     },
 
-
   },
-    //   getUserAction: function ({commit},)
-  // },
+
   modules: {
   }
 })
