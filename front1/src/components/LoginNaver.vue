@@ -47,17 +47,21 @@ export default {
                             reject('AccessToken이 올바르지 않습니다.') 
                         }
                     })  
-                })}
+                }
+            )
+        }
 
-        getUserInfo().then((data)=>{
-                        console.log("네이버로그인5",data)
-                        const social = 'naver'
-                        this.$store.dispatch("userGetAction", {data, social});
-                        this.$router.push({name:'home'})
+        await getUserInfo()
+                .then((data)=>{
+                    console.log("네이버로그인5",data)
+                    const social = 'naver'
+                    this.$store.dispatch("userGetAction", {data, social});
                     }).catch((err)=>{
                         console.log(err)
-                    }
-                )
+                        } 
+                    )
+        this.$router.push({name:'home'})
+        
     }
 }
 
