@@ -59,6 +59,7 @@ export default {
                     this.$router.push({name:'home'})
                     }).catch((err)=>{
                         console.log(err)
+                        this.$router.push({name:'login'})
                         } 
                     )
         
