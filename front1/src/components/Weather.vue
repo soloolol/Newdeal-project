@@ -28,42 +28,43 @@
       <v-card-text>
         <v-row align="center">
           <v-col
+            style="display:flex; align-items:center; justify-content: center;"
             class="text-h4"
             cols="6"
           >
             {{todayWeatherData.day}} {{todayWeatherData.weather}}
           </v-col>
-          <v-col cols="6">
+          <v-col style="display:flex; align-items:center; justify-content: center;" cols="6">
             <template>
-              <div v-if="todayWeatherData.weather=='맑음'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-if="todayWeatherData.weather=='맑음'">
                 <v-img
                 src="@/assets/sunny.png"
                 alt="Sunny image"
                 width="92"
                 ></v-img>
               </div>
-              <div v-else-if="todayWeatherData.weather=='흐림'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-else-if="todayWeatherData.weather=='흐림'">
                 <v-img
                 src="@/assets/darkSky.png"
                 alt="darkSky image"
                 width="92"
                 ></v-img>
               </div>
-              <div v-else-if="todayWeatherData.weather=='구름많음'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-else-if="todayWeatherData.weather=='구름많음'">
                 <v-img
                 src="@/assets/manyCloud.png"
                 alt="manyCloud image"
                 width="92"
                 ></v-img>
               </div>
-              <div v-else-if="todayWeatherData.weather=='비'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-else-if="todayWeatherData.weather=='비'">
                 <v-img
                 src="@/assets/rain.png"
                 alt="rain image"
                 width="92"
                 ></v-img>
               </div>
-              <div v-else>
+              <div style="display:flex; align-items:center; justify-content: center;" v-else>
                 <v-img
                 src="@/assets/logo.png"
                 alt="darkSky image"
@@ -76,60 +77,61 @@
       </v-card-text>
 
       <v-list-item>
-        <v-list-item-subtitle>풍속</v-list-item-subtitle>
-        <v-list-item-subtitle>{{todayWeatherData.windSpeed}}</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >풍속</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >{{todayWeatherData.windSpeed}}</v-list-item-subtitle>
       </v-list-item>
 
       <v-list-item>
-        <v-list-item-subtitle>풍향</v-list-item-subtitle>
-        <v-list-item-subtitle>{{todayWeatherData.windDir}}</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">풍향</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">{{todayWeatherData.windDir}}</v-list-item-subtitle>
       </v-list-item>
 
       <v-list-item>
-        <v-list-item-subtitle>파고</v-list-item-subtitle>
-        <v-list-item-subtitle>{{todayWeatherData.seaHeight}}</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">파고</v-list-item-subtitle>
+        <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">{{todayWeatherData.seaHeight}}</v-list-item-subtitle>
       </v-list-item>
 
       <v-list class="transparent">
         <v-list-item
+          style="display:flex; align-items:center; justify-content: center;"
           v-for="item in currnetLocationWeatherData"
           :key="item.index"
         >
-          <v-list-item-title>{{ item.day }}</v-list-item-title>
+          <v-list-item-title style="display:flex; align-items:center; justify-content: center;">{{ item.day }}</v-list-item-title>
 
-          <v-list-item-title>{{ item.time }}</v-list-item-title>
+          <v-list-item-title style="display:flex; align-items:center; justify-content: center;">{{ item.time }}</v-list-item-title>
 
-          <v-list-item-title>
+          <v-list-item-title style="display:flex; align-items:center; justify-content: center;">
             <template>
-              <div v-if="item.weather=='맑음'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-if="item.weather=='맑음'">
                 <v-img
                 src="@/assets/sunny.png"
                 alt="Sunny image"
                 width="30"
                 ></v-img>
               </div>
-              <div v-else-if="item.weather=='흐림'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-else-if="item.weather=='흐림'">
                 <v-img
                 src="@/assets/darkSky.png"
                 alt="darkSky image"
                 width="30"
                 ></v-img>
               </div>
-              <div v-else-if="item.weather=='구름많음'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-else-if="item.weather=='구름많음'">
                 <v-img
                 src="@/assets/manyCloud.png"
                 alt="manyCloud image"
                 width="30"
                 ></v-img>
               </div>
-              <div v-else-if="item.weather=='비'">
+              <div style="display:flex; align-items:center; justify-content: center;" v-else-if="item.weather=='비'">
                 <v-img
                 src="@/assets/rain.png"
                 alt="rain image"
                 width="30"
                 ></v-img>
               </div>
-              <div v-else>
+              <div style="display:flex; align-items:center; justify-content: center;" v-else>
                 <v-img
                 src="@/assets/logo.png"
                 alt="darkSky image"
@@ -141,14 +143,6 @@
           </v-list-item-title>
         </v-list-item>
       </v-list>
-
-      <v-divider></v-divider>
-
-      <v-card-actions>
-        <v-btn text>
-          Full Report
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </v-container>
 </template>
