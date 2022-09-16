@@ -109,8 +109,8 @@
           }
         },
         myInfo(){
-          console.log(this.$store.state.userStore.userInfo.thumbnail)
           if(this.$store.state.userStore.userInfo.thumbnail){
+            console.log(this.$store.state.userStore.userInfo.thumbnail)
             this.thumbnail = this.$store.state.userStore.userInfo.thumbnail
             this.showImg = "display:flex;"
           }else{
