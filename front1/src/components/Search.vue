@@ -21,14 +21,13 @@
 
       <v-card v-if="data">
         <v-card class="mx-5" style="border-radius:20px;" v-for="(value, index) in data" :key="index">
-        {{value._source}}
-          <v-card-subtitle>{{value._source.어종}}</v-card-subtitle>
+          <v-card-subtitle><h6>{{value._source.어종}}</h6></v-card-subtitle>
           <v-card-text>서식지 : {{value._source.서식지}}</v-card-text>
           <v-card-text>산란기 : {{value._source.산란기}}</v-card-text>
           <v-card-text>색깔 : {{value._source.색깔}}</v-card-text>
           <v-card-text>분포 : {{value._source.분포}}</v-card-text>
           <v-card-text>형태 : {{value._source.형태}}</v-card-text>
-          <v-card-text>참고문헌 : {{value._source.참고문헌}}</v-card-text>
+          <v-card-text color="darkblue">참고문헌 : {{value._source.참고문헌}}</v-card-text>
         </v-card>
       </v-card>
 
