@@ -43,35 +43,35 @@
             <template>
               <div style="display:flex; align-items:center; justify-content: center;" v-if="todayWeatherData.weather=='맑음'">
                 <v-img
-                src="require('../assets/sunny.png')"
+                :src="require('../assets/sunny.png')"
                 alt="Sunny image"
                 width="92"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else-if="todayWeatherData.weather=='흐림'">
                 <v-img
-                src="require('../assets/darkSky.png')"
+                :src="require('../assets/darkSky.png')"
                 alt="darkSky image"
                 width="92"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else-if="todayWeatherData.weather=='구름많음'">
                 <v-img
-                src="require('../assets/manyCloud.png')"
+                :src="require('../assets/manyCloud.png')"
                 alt="manyCloud image"
                 width="92"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else-if="todayWeatherData.weather=='비'">
                 <v-img
-                src="require('../assets/rain.png')"
+                :src="require('../assets/rain.png')"
                 alt="rain image"
                 width="92"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else>
                 <v-img
-                src="require('../assets/logo.png')"
+                :src="require('../assets/darkSky.png')"
                 alt="darkSky image"
                 width="92"
                 ></v-img>
@@ -110,35 +110,35 @@
             <template>
               <div style="display:flex; align-items:center; justify-content: center;" v-if="item.weather=='맑음'">
                 <v-img
-                src="require('../assets/sunny.png')"
+                :src="require('../assets/sunny.png')"
                 alt="Sunny image"
                 width="30"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else-if="item.weather=='흐림'">
                 <v-img
-                src="require('../assets/darkSky.png')"
+                :src="require('../assets/darkSky.png')"
                 alt="darkSky image"
                 width="30"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else-if="item.weather=='구름많음'">
                 <v-img
-                src="require('../assets/manyCloud.png')"
+                :src="require('../assets/manyCloud.png')"
                 alt="manyCloud image"
                 width="30"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else-if="item.weather=='비'">
                 <v-img
-                src="require('../assets/rain.png')"
+                :src="require('../assets/rain.png')"
                 alt="rain image"
                 width="30"
                 ></v-img>
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else>
                 <v-img
-                src="require('../assets/darkSky.png')"
+                :src="require('../assets/darkSky.png')"
                 alt="darkSky image"
                 width="30"
                 ></v-img>
