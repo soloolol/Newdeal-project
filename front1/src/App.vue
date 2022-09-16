@@ -10,18 +10,19 @@
       scroll-target="#main"
     >
       <v-spacer></v-spacer>
-      <div class="d-flex align-center">
-<!--   <v-img
+      <div class="d-flex align-center pl-10">
+  <v-img
           alt="nunukang"
           class="shrink mt-1"
           contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        /> -->
-        <h2 class="headline font-weight-semibold pl-10" style="color:dimgrey;">
+          min-width="50"
+          width="70"
+          :src="require('./assets/nunukang.jpeg')"
+          max-width="120"
+        />
+        <!-- <h2 class="headline font-weight-semibold pl-10" style="color:dimgrey;">
           nunukang
-        </h2>
+        </h2> -->
       </div>
       <v-spacer></v-spacer>
       <div>
