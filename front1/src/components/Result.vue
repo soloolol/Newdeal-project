@@ -57,7 +57,7 @@
     },
     mounted() {
         //const data = this.$store.state.fishTmp.resultImg;
-        let data = this.$store.state.fishTmp
+        let data = this.$store.state.userStore.fishTmp
             // 이미지를 base64 str data 로 받았을때
         this.boxedImg = 'data:image/jpeg;base64,' + data.imageData;
             // raw binary data 로 이미지를 받았을 때
