@@ -1,10 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+
 import axios from 'axios'
 
 Vue.use(Vuex)
 
-const userStore = new Vuex.Store({
+const userStore = {
 
   state: {
     userInfo: undefined,
@@ -70,6 +69,6 @@ const userStore = new Vuex.Store({
 
   modules: {
   },
-})
+}
 
 export default userStore
