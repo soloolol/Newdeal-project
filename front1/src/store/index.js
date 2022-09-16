@@ -6,16 +6,12 @@ import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
 
   modules: {
     userStore: userStore
   },
-  plugins:[
-    createPersistedState({
+  plugins:[createPersistedState({
       path:['userStore']
-    })
-  ],
+  })],
 })
-
-export default store
