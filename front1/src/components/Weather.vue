@@ -80,7 +80,7 @@
           </v-col>
         </v-row>
       </v-card-text>
-
+      <v-divider></v-divider>
       <v-list-item>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >풍속</v-list-item-subtitle>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >{{todayWeatherData.windSpeed}}m/s</v-list-item-subtitle>
@@ -95,6 +95,8 @@
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">파고</v-list-item-subtitle>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">{{todayWeatherData.seaHeight}}m</v-list-item-subtitle>
       </v-list-item>
+
+      <v-divider></v-divider>
 
       <v-list class="transparent">
         <v-list-item
