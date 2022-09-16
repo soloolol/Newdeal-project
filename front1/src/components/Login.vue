@@ -29,22 +29,28 @@
     >
       <v-row justify="center" >
         <v-col cols="12">
-          <v-avatar size="110" color="red" v-if="this.$store.state.userInfo.thumbnail===null">
-            <v-icon dark>mdi-account-circle</v-icon>
-          </v-avatar>
+          <v-row justify="center">
 
-          <v-avatar size="110" color="orange" v-else>
-            <img
-              :src="this.$store.state.userInfo.thumbnail"
-              alt="userProfile"
-            >
-          </v-avatar>
+            <v-avatar size="110" color="red" v-if="this.$store.state.userInfo.thumbnail===null">
+              <v-icon dark>mdi-account-circle</v-icon>
+            </v-avatar>
+
+            <v-avatar size="110" color="orange" v-else>
+              <img
+                :src="this.$store.state.userInfo.thumbnail"
+                alt="userProfile"
+              >
+            </v-avatar>
+
+          </v-row>
         </v-col>
       </v-row>
 
       <v-row>
         <v-col cols="12">
-          <v-title justify="center" text-align="center" align-items="center">{{this.$store.state.userInfo.nickname}}</v-title>
+          <v-row justify="center">
+            <v-title justify="center" text-align="center" align-items="center">{{this.$store.state.userInfo.nickname}}</v-title>
+          </v-row>
         </v-col>
       </v-row>
 
