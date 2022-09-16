@@ -8,7 +8,6 @@
       app
       elevate-on-scroll
       scroll-target="#main"
-      elevation="2"
     >
       <v-spacer></v-spacer>
       <div class="d-flex align-center">
@@ -20,8 +19,8 @@
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
         /> -->
-        <h2 class="headline font-weight-semibold pl-10" style="color:black;">
-          NuNuKang
+        <h2 class="headline font-weight-semibold pl-10" style="color:dimgrey;">
+          nunukang
         </h2>
       </div>
       <v-spacer></v-spacer>

@@ -2,20 +2,21 @@
   <v-container>
     <v-card       
     light
-    class="mx-auto pa-2"
+    class="mx-auto pa-2 pb-10"
     max-width="400"
+    
     >
       <v-card-title>
           낚시 포인트 갤러리
       </v-card-title>
-      <div id="map" @click="mapClick" style="width:100%;height:65vh;"></div>
       <v-row class="pa-5" justify="center">
         <v-col cols="12">
           <v-row justify="center">
-            <v-btn @click="setMarker" class="mx-5">이 위치에서 잡은 물고기 보기</v-btn>
+            <v-btn color="#398DFF" rounded dark @click="setMarker" class="mx-5">이 위치에서 잡은 물고기 보기</v-btn>
           </v-row>
         </v-col>
       </v-row> 
+      <div id="map" @click="mapClick" style="width:100%;height:65vh;"></div>
     </v-card>
   </v-container>
 </template>
