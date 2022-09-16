@@ -9,14 +9,11 @@
     >
       <v-row justify="center">
         <v-col cols="12">
-          <v-row justify="center" class="mb-10">
-            <v-card-title>LOGIN</v-card-title>
-          </v-row>
-          <v-row justify="center" class="mb-10">
+          <v-row justify="center" class="pa-10">
             <!-- <div id="naverIdLogin"></div> -->
             <v-btn text elevation="0" @click="loginWithNaver"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="222"/></v-btn>
           </v-row>
-          <v-row justify="center" class="mb-10">
+          <v-row justify="center" class="pa-10">
             <v-btn text elevation="0" @click="loginWithKakao"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></v-btn>
           </v-row>
         </v-col>

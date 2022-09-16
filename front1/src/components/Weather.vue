@@ -14,12 +14,17 @@
             :items="locationFront"
             v-model="locationFrontSelect"
             @change="changeLocationFront"
+            dense
           ></v-select>
           <v-list-item-title class="text-h5">
             <v-select
             :items="locationEnd[locationEndIndex]"
             v-model="locationEndSelect"
             @change="changeLocationEnd"
+            dense
+            color="cyan"
+            rounded
+            outlined
           ></v-select>
           </v-list-item-title>
         </v-list-item-content>

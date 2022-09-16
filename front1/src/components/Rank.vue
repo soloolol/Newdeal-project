@@ -11,15 +11,18 @@
       <!-- 셀렉트박스 -->
       <v-row align="center">
         <v-col
-          class="d-flex"
-          cols="12"
+          class="d-flex mx-auto"
+          cols="11"
           sm="6"
         >
           <v-select
             :items="items"
             v-model="selected"
-            label="select !"
+            
             @change="getRankData()"
+            dense
+            outlined
+            rounded
           ></v-select>
         </v-col>
       </v-row>

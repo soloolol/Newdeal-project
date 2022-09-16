@@ -1,11 +1,12 @@
 <template>
   <v-app>
     <v-app-bar
-      style="background:#FFFFFF;"
+      style="background:#FFFFFF; opacity: 90%;"
       light
       absolute
+      dense
       app
-      hide-on-scroll
+      elevate-on-scroll
       scroll-target="#main"
       elevation="2"
     >
@@ -37,7 +38,7 @@
       </div>
     </v-app-bar>
 
-    <v-main id="main" style="display: flex; justify-content: center;">
+    <v-main id="main" style="display: flex; justify-content: center; background-color: #fafafa;">
       <router-view/>
     </v-main>
     
