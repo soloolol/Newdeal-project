@@ -18,8 +18,6 @@
           ></v-text-field>
         </v-col>
       </v-row>
-
-      <v-card v-if="data">
         <v-card class="mx-5" style="border-radius:20px;" v-for="(value, index) in data" :key="index">
           <v-card-subtitle><h6>{{value._source.어종}}</h6></v-card-subtitle>
           <v-card-text>서식지 : {{value._source.서식지}}</v-card-text>
@@ -29,8 +27,6 @@
           <v-card-text>형태 : {{value._source.형태}}</v-card-text>
           <v-card-text color="darkblue">참고문헌 : {{value._source.참고문헌}}</v-card-text>
         </v-card>
-      </v-card>
-
   </v-container>
 </template>
 <script>
