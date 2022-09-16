@@ -126,8 +126,8 @@
             this.cameraStart()
             this.getCurrentPosition()
             this.getUserId()
-            console.log('camera:', this.userId, this.$store.state.userInfo, this.$store.state.snackbarCookie)
-            if(this.userId && this.$store.state.snackbarCookie == 0){
+            console.log('camera:', this.userId, this.$store.state.userStore.userInfo, this.$store.state.userStore.snackbarCookie)
+            if(this.userId && this.$store.state.userStore.snackbarCookie == 0){
                 this.snackbar = true
                 this.snackbarCookie()
             }
@@ -257,8 +257,8 @@
             },
 
             getUserId(){
-                if(this.$store.state.userInfo){
-                    this.userId = this.$store.state.userInfo.nickname
+                if(this.$store.state.userStore.userInfo){
+                    this.userId = this.$store.state.userStore.userInfo.nickname
                 }
             },
             popClose(){

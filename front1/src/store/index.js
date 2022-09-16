@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import userStore from './userStore';
+import userStore from '@/store/modules/userStore';
 import createPersistedState from 'vuex-persistedstate';
 
 

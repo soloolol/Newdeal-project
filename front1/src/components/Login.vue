@@ -49,7 +49,7 @@
       <v-row>
         <v-col cols="12">
           <v-row justify="center">
-            <v-card-title justify="center" text-align="center" align-items="center">{{this.$store.state.userInfo.nickname}}</v-card-title>
+            <v-card-title justify="center" text-align="center" align-items="center">{{this.$store.state.userStore.userInfo.nickname}}</v-card-title>
           </v-row>
         </v-col>
       </v-row>
@@ -87,10 +87,10 @@
 
       //로그인 값 있으면 로그아웃 창 띄우고 아니면 로그인 창
       mounted(){
-        console.log(this.$store.state.userInfo)
+        console.log(this.$store.state.userStore.userInfo)
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
-        console.log('네이버로그인되어있음?',this.$store.state.userInfo)
-        if (this.$store.state.userInfo) {
+        console.log('네이버로그인되어있음?',this.$store.state.userStore.userInfo)
+        if (this.$store.state.userStore.userInfo) {
           this.login = true;
         }else {
           this.getUserId();
@@ -104,16 +104,16 @@
         ...mapActions(['userGetAction']),
 
         getUserId(){
-          if(this.$store.state.userInfo){
-              this.userId = this.$store.state.userInfo.nickname
+          if(this.$store.state.userStore.userInfo){
+              this.userId = this.$store.state.userStore.userInfo.nickname
           }
         },
         myInfo(){
-          console.log(this.$store.state.userInfo.thumbnail)
-          if(this.$store.state.userInfo.thumbnail === null || this.$store.state.userInfo.thumbnail === undefined){
+          console.log(this.$store.state.userStore.userInfo.thumbnail)
+          if(this.$store.state.userStore.userInfo.thumbnail === null || this.$store.state.userStore.userInfo.thumbnail === undefined){
             this.showIcon = "display:flex;"
           }else{
-            this.thumbnail = this.$store.state.userInfo.thumbnail
+            this.thumbnail = this.$store.state.userStore.userInfo.thumbnail
             this.showImg = "display:flex;"
           }
         },
@@ -140,11 +140,11 @@
           if(window.Kakao.Auth.getAccessToken()){
             console.log('카카오로그아웃');
             this.kakaoLogOut();
-            console.log(this.$store.state.userInfo);
+            console.log(this.$store.state.userStore.userInfo);
           }else{
             console.log('네이버로그아웃');
             this.naverLogOut();
-            console.log(this.$store.state.userInfo);
+            console.log(this.$store.state.userStore.userInfo);
           }
         },
 
@@ -161,7 +161,7 @@
           await window.Kakao.Auth.logout();
           this.snackbarCookieReset();
           this.storeUserInfoReset();
-          alert('로그아웃 되었습니다.',this.$store.state.userInfo);
+          alert('로그아웃 되었습니다.',this.$store.state.userStore.userInfo);
           this.$router.push({name:'home'});
         },
 
@@ -173,7 +173,7 @@
           await naverLogin.logout();
           this.snackbarCookieReset();
           this.storeUserInfoReset();
-          alert('로그아웃 되었습니다.', this.$store.state.userInfo);
+          alert('로그아웃 되었습니다.', this.$store.state.userStore.userInfo);
           this.$router.push({name:'home'});
         },
 
