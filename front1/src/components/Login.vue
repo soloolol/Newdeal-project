@@ -31,11 +31,11 @@
         <v-col cols="12">
           <v-row justify="center">
 
-            <v-avatar size="110" color="red" :display="showIcon">
+            <v-avatar size="110" color="red" :style="showIcon">
               <v-icon dark>mdi-account-circle</v-icon>
             </v-avatar>
 
-            <v-avatar size="110" color="orange" :display="showImg">
+            <v-avatar size="110" color="orange" :style="showImg">
               <img
                 :src="thumbnail"
                 alt="userProfile"
@@ -76,8 +76,8 @@
         return{
           login: false,
           userInfo: undefined,
-          showIcon:'none',
-          showImg:'none',
+          showIcon:'display:none;',
+          showImg:'display:none;',
           thumbnail:''
         }
       },
@@ -110,10 +110,10 @@
         },
         myInfo(){
           if(this.$store.state.userInfo.thumbnail === null || this.$store.state.userInfo.thumbnail === undefined){
-            this.showIcon = "flex"
+            this.showIcon = "display:flex;"
           }else{
             this.thumbnail = this.$store.state.userInfo.thumbnail
-            this.showImg = "flex"
+            this.showImg = "display:flex;"
           }
         },
 
