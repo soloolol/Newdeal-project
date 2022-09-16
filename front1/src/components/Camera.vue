@@ -126,7 +126,7 @@
             this.cameraStart()
             this.getCurrentPosition()
             this.getUserId()
-            console.log('camera:', this.userId, this.$store.state.userStore.userInfo, this.$store.state.userStore.snackbarCookie)
+            // console.log('camera:', this.userId, this.$store.state.userStore.userInfo, this.$store.state.userStore.snackbarCookie)
             if(this.userId && this.$store.state.userStore.snackbarCookie == 0){
                 this.snackbar = true
                 this.snackbarCookie()
@@ -146,7 +146,7 @@
                         this.$refs.camera.srcObject = stream;
                     })
                     .catch(error => {
-                        console.error("카메라에 문제가 있습니다.", error);
+                        alert("카메라에 문제가 있습니다.", error);
                     })
             },
  
@@ -163,7 +163,7 @@
                 setTimeout(() => {
                     self.$refs.canvas.width = self.$refs.camera.videoWidth
                     self.$refs.canvas.height = self.$refs.camera.videoHeight
-                    console.log(self.$refs.canvas.width,self.$refs.camera.videoWidth)
+                    // console.log(self.$refs.canvas.width,self.$refs.camera.videoWidth)
   
                     const context = self.$refs.canvas.getContext('2d');
                     
@@ -182,18 +182,18 @@
                 let formData = new FormData()
 
                 //촬영한 물고기 이미지 파일
-                console.log('이미지', capturedPhotoFile)
+                // console.log('이미지', capturedPhotoFile)
                 formData.append('fish', capturedPhotoFile)
 
                 //잡은 물고기 location(위도, 경도)
     
-                console.log('위도',this.latitude)
+                // console.log('위도',this.latitude)
                 formData.append('latitude', this.latitude)
                 formData.append('longitude', this.longitude)
 
                 //userId 함께 보내기
                 if(this.userId.id){
-                    console.log('위도',this.userId.id)
+                    // console.log('위도',this.userId.id)
                     formData.append('userId', this.userId.id)
                 }else{
                     formData.append('userId', 'geust')
@@ -206,7 +206,7 @@
                             'Content-Type' : 'multipart/form-data',
                         }
                     }).then(resp => {
-                        console.log('성공적 키:', Object.keys(resp.data))
+                        // console.log('성공적 키:', Object.keys(resp.data))
                         //console.log("성공적", resp)
                         //data를 store.state.fishTmp에 저장
                         this.fishTmpAction(resp.data)
@@ -215,7 +215,7 @@
                         this.$router.push({name:'result'})
                     }).catch(error => {
                         console.log(error) 
-                        //alert("")
+                        alert("다시 촬영해 주세요")
                     })
 
             },
@@ -244,14 +244,14 @@
                 } else {
 
                     navigator.geolocation.getCurrentPosition(pos => {
-                        console.log(pos.coords.latitude)
+                        // console.log(pos.coords.latitude)
                         this.latitude = pos.coords.latitude;
                         this.longitude = pos.coords.longitude;
                     },this.geolocationError)
                 }
             },
             geolocationError () {
-                console.log('위치 정보 찾을 수 없음')
+                // console.log('위치 정보 찾을 수 없음')
                 this.latitude = 0
                 this.longitude = 0
             },

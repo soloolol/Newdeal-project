@@ -14,7 +14,7 @@ const kakaoHeader = {
   };
 
   const getKakaoToken = async (code) => {
-    console.log('loginWithKakao');
+    // console.log('loginWithKakao');
     try {
         const data = {
             grant_type: 'authorization_code',
@@ -26,7 +26,7 @@ const kakaoHeader = {
         const queryString = Object.keys(data)
             .map(k => k + '=' + data[k])
             .join('&');
-        console.log(queryString)
+        // console.log(queryString)
         const result = await axios.post('https://kauth.kakao.com/oauth/token', queryString, { headers: kakaoHeader });
         console.log('카카오 토큰', result);
         
@@ -51,9 +51,11 @@ const kakaoHeader = {
           },
           fail: function (err) {
               console.log(err);
+              alert('다시 로그인 해주세요.')
+              this.$router.push({name:'login'})
           },
       });
-      console.log('카카오 계정 정보', data);
+      // console.log('카카오 계정 정보', data);
       return data
   }
 
@@ -74,7 +76,7 @@ const kakaoHeader = {
     async created(){
       if(this.$route.query.code){
         const data = await getKakaoToken(this.$route.query.code)
-        console.log('created훅',data)
+        // console.log('created훅',data)
         const social = "kakao"
         await this.$store.dispatch("userGetAction", {data, social});
         this.$router.push({name:'home'});

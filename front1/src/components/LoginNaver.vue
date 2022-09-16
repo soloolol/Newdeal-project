@@ -24,7 +24,7 @@ export default {
 
         naverLogin.init()
 
-        console.log("네이버로그인중2",window.naverLogin)
+        // console.log("네이버로그인중2",window.naverLogin)
 
         function getUserInfo(){ 
             return new Promise(
@@ -41,7 +41,7 @@ export default {
                             profile_image: naverLogin.user.profile_image,
                             email: naverLogin.user.email
                             }
-                            console.log("네이버로그인중3",info)
+                            // console.log("네이버로그인중3",info)
                             resolve(info)
                         } else {
                             reject('AccessToken이 올바르지 않습니다.') 
@@ -53,7 +53,7 @@ export default {
 
         await getUserInfo()
                 .then(async (data)=>{
-                    console.log("네이버로그인5",data)
+                    // console.log("네이버로그인5",data)
                     const social = 'naver'
                     await this.$store.dispatch("userGetAction", {data, social});
                     this.$router.push({name:'home'})

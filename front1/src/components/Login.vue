@@ -87,9 +87,9 @@
 
       //로그인 값 있으면 로그아웃 창 띄우고 아니면 로그인 창
       mounted(){
-        console.log(this.$store.state.userStore.userInfo)
-        console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
-        console.log('네이버로그인되어있음?',this.$store.state.userStore.userInfo)
+        // console.log(this.$store.state.userStore.userInfo)
+        // console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
+        // console.log('네이버로그인되어있음?',this.$store.state.userStore.userInfo)
         if (this.$store.state.userStore.userInfo) {
           this.getUserId();
           this.login = true;
@@ -110,7 +110,7 @@
         },
         myInfo(){
           if(this.$store.state.userStore.userInfo.thumbnail){
-            console.log(this.$store.state.userStore.userInfo.thumbnail)
+            // console.log(this.$store.state.userStore.userInfo.thumbnail)
             this.thumbnail = this.$store.state.userStore.userInfo.thumbnail
             this.showImg = "display:flex;"
           }else{
@@ -138,13 +138,13 @@
         
         logOut(){
           if(window.Kakao.Auth.getAccessToken()){
-            console.log('카카오로그아웃');
+            // console.log('카카오로그아웃');
             this.kakaoLogOut();
-            console.log(this.$store.state.userStore.userInfo);
+            // console.log(this.$store.state.userStore.userInfo);
           }else{
-            console.log('네이버로그아웃');
+            // console.log('네이버로그아웃');
             this.naverLogOut();
-            console.log(this.$store.state.userStore.userInfo);
+            // console.log(this.$store.state.userStore.userInfo);
           }
         },
 
