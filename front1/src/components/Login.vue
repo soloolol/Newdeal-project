@@ -49,7 +49,7 @@
       <v-row>
         <v-col cols="12">
           <v-row justify="center">
-            <v-title justify="center" text-align="center" align-items="center">{{this.$store.state.userInfo.nickname}}</v-title>
+            <v-card-title justify="center" text-align="center" align-items="center">{{this.$store.state.userInfo.nickname}}</v-card-title>
           </v-row>
         </v-col>
       </v-row>
@@ -109,6 +109,7 @@
           }
         },
         myInfo(){
+          console.log(this.$store.state.userInfo.thumbnail)
           if(this.$store.state.userInfo.thumbnail === null || this.$store.state.userInfo.thumbnail === undefined){
             this.showIcon = "display:flex;"
           }else{
