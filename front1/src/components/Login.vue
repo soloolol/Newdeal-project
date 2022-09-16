@@ -37,7 +37,7 @@
 
             <v-avatar size="110" color="orange" :display="showImg">
               <img
-                :src="this.$store.state.userInfo.thumbnail"
+                :src="thumbnail"
                 alt="userProfile"
               >
             </v-avatar>
@@ -78,6 +78,7 @@
           userInfo: undefined,
           showIcon:'none',
           showImg:'none',
+          thumbnail:''
         }
       },
       created(){
@@ -94,6 +95,7 @@
         }else {
           this.getUserId();
           this.login = false;
+          this.myInfo();
         };
       },
 
@@ -110,6 +112,7 @@
           if(this.$store.state.userInfo.thumbnail === null || this.$store.state.userInfo.thumbnail === undefined){
             this.showIcon = "flex"
           }else{
+            this.thumbnail = this.$store.state.userInfo.thumbnail
             this.showImg = "flex"
           }
         },
