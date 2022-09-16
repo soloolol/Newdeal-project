@@ -31,7 +31,7 @@
         <v-btn 
             outlined
             fab
-            style="background-color: #FFFFFF;overflow:hidden;z-index:100; position:fixed;left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);"
+            :style="cameraBtn"
             x-large
             color="light-blue"
             class="mb-2"
@@ -116,7 +116,8 @@
                 longitude:null,
                 userInfo: '',
                 popDisplay:"display: flex;",
-                checkPopUpCookies : false
+                checkPopUpCookies : false,
+                cameraBtn:"display: none; background-color: #FFFFFF;overflow:hidden;z-index:100; position:fixed;left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);"
             }
         },
         created(){
@@ -148,6 +149,7 @@
                     .catch(error => {
                         alert("카메라에 문제가 있습니다.", error);
                     })
+                this.cameraBtn = "background-color: #FFFFFF; overflow:hidden; z-index:100; position:fixed; left: 50%;transform: translate(-50%, 0);bottom:0px; box-shadow: 0 3px 20px 1px rgba(0,0,0,.2);" 
             },
  
             stopCameraStream() {
@@ -155,6 +157,7 @@
                 tracks.forEach(track => {
                     track.stop();
                 });
+                this.cameraBtn = "display:none;"
             },
  
             capture() {
