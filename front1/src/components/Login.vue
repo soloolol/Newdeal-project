@@ -27,17 +27,17 @@
       max-width="400"
       align-items="center"
     >
-      <!-- <v-avatar size="110" color="red" v-if="this.userInfo.thumbnail===null">
+      <v-avatar size="110" color="red" v-if="this.$store.state.userInfo.thumbnail===null">
         <v-icon dark>mdi-account-circle</v-icon>
       </v-avatar>
       <v-avatar size="110" color="orange" v-else>
         <img
-          :src="this.userInfo.thumbnail"
+          :src="this.$store.state.userInfo.thumbnail"
           alt="userProfile"
         >
       </v-avatar>
-      <v-title justify="center" text-align="center" align-items="center">{{this.userInfo.nickname}}</v-title> -->
-      <v-row justify="center">
+      <v-title justify="center" text-align="center" align-items="center">{{this.$store.state.userInfo.nickname}}</v-title>
+      <v-row justify="center" >
         <v-col cols="12">
           <v-row justify="center" class="mb-10">
             <v-btn color="blue-grey" class="ma-2 white--text" @click="logOut">로그아웃</v-btn>
@@ -73,8 +73,8 @@
         if (window.Kakao.Auth.getAccessToken() || this.$store.state.userInfo) {
           this.login = true;
         }else {
-          this.login = false;
           this.getUserId();
+          this.login = false;
         };
       },
 
