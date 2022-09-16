@@ -90,7 +90,7 @@
         console.log(this.$store.state.userInfo)
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
         console.log('네이버로그인되어있음?',this.$store.state.userInfo)
-        if (window.Kakao.Auth.getAccessToken() || this.$store.state.userInfo) {
+        if (this.$store.state.userInfo) {
           this.login = true;
         }else {
           this.getUserId();
