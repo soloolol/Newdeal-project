@@ -4,7 +4,7 @@ import axios from 'axios'
 const userStore = {
 
   state: {
-    userInfo: undefined,
+    userInfo: undefined,//thumbnail, id, nickname
     fishTmp: undefined,
     snackbarCookie: 0,
   },

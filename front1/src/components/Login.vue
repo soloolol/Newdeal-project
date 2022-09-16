@@ -91,11 +91,11 @@
         console.log('카카오로그인되어있음',window.Kakao.Auth.getAccessToken())
         console.log('네이버로그인되어있음?',this.$store.state.userStore.userInfo)
         if (this.$store.state.userStore.userInfo) {
-          this.login = true;
-        }else {
           this.getUserId();
-          this.login = false;
+          this.login = true;
           this.myInfo();
+        }else {
+          this.login = false;
         };
       },
 
