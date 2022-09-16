@@ -141,7 +141,8 @@
 
             cameraStart(){
                 const front = false;
-                const constraints = { video: { width: 640,height: 1280, facingMode: (front? "user" : "environment") } };
+                // const constraints = { video: { width: 340,height: 620, facingMode: (front? "user" : "environment") } };
+                const constraints = { video: { facingMode: (front? "user" : "environment") } };
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(stream => {
                         this.$refs.camera.srcObject = stream;
@@ -294,7 +295,7 @@
     }
 
     #camera--view, #camera--sensor, #camera--output{
-        /*transform: scaleX(-1);*/
+        /* transform: scaleX(-1); */
         filter: FlipH;
     }
     #pop{
