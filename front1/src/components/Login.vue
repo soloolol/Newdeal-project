@@ -23,15 +23,15 @@
     <v-card
       v-else
       light
-      class="mx-auto pa-2"
+      class="mx-auto pa-10"
       max-width="400"
       align-items="center"
     >
-      <v-row justify="center" >
+      <v-row justify="center" class="mx-10">
         <v-col cols="12">
           <v-row justify="center">
 
-            <v-avatar size="110" color="red" v-if="this.$store.state.userInfo.thumbnail===null">
+            <v-avatar size="110" color="red" v-if="(this.$store.state.userInfo.thumbnail = null) || (this.$store.state.userInfo.thumbnail = undefined)">
               <v-icon dark>mdi-account-circle</v-icon>
             </v-avatar>
 
