@@ -8,7 +8,7 @@
             style="height:50px; opacity: 85%; margin-top: 100px; z-index: 20000;"
             top
         >
-            환영합니다 ! <strong>{{ this.userId }}</strong> 님
+            환영합니다 ! <strong>{{ this.userInfo.nickname }}</strong> 님
         </v-snackbar>
         <v-card       
         light
@@ -114,7 +114,7 @@
                 snackbar: false,
                 latitude:null,
                 longitude:null,
-                userId: '',
+                userInfo: '',
                 popDisplay:"display: flex;",
                 checkPopUpCookies : false
             }
@@ -125,9 +125,9 @@
         mounted(){
             this.cameraStart()
             this.getCurrentPosition()
-            this.getUserId()
+            this.getUserInfo()
             // console.log('camera:', this.userId, this.$store.state.userStore.userInfo, this.$store.state.userStore.snackbarCookie)
-            if(this.userId && this.$store.state.userStore.snackbarCookie == 0){
+            if(this.userInfo && this.$store.state.userStore.snackbarCookie == 0){
                 this.snackbar = true
                 this.snackbarCookie()
             }
@@ -192,9 +192,9 @@
                 formData.append('longitude', this.longitude)
 
                 //userId 함께 보내기
-                if(this.userId.id){
-                    // console.log('위도',this.userId.id)
-                    formData.append('userId', this.userId.id)
+                if(this.userInfo.id){
+                    console.log('위도',this.userInfo.id)
+                    formData.append('userId', this.userInfo.id)
                 }else{
                     formData.append('userId', 'geust')
                 }
@@ -256,9 +256,9 @@
                 this.longitude = 0
             },
 
-            getUserId(){
+            getUserInfo(){
                 if(this.$store.state.userStore.userInfo){
-                    this.userId = this.$store.state.userStore.userInfo.nickname
+                    this.userInfo = this.$store.state.userStore.userInfo
                 }
             },
             popClose(){
