@@ -102,7 +102,7 @@
    
       methods:{
         ...mapActions(['userGetAction']),
-
+  
         getUserId(){
           if(this.$store.state.userStore.userInfo){
               this.userId = this.$store.state.userStore.userInfo.nickname
@@ -110,11 +110,11 @@
         },
         myInfo(){
           console.log(this.$store.state.userStore.userInfo.thumbnail)
-          if(this.$store.state.userStore.userInfo.thumbnail === null || this.$store.state.userStore.userInfo.thumbnail === undefined){
-            this.showIcon = "display:flex;"
-          }else{
+          if(this.$store.state.userStore.userInfo.thumbnail){
             this.thumbnail = this.$store.state.userStore.userInfo.thumbnail
             this.showImg = "display:flex;"
+          }else{
+            this.showIcon = "display:flex;"
           }
         },
 
