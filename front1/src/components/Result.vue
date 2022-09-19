@@ -18,24 +18,6 @@
         길이 : {{cm}} cm
         </v-card-title>
 
-        <v-card-actions>
-            <v-btn
-                color="orange lighten-2"
-                text
-            >
-                어종 정보
-            </v-btn>
-
-            <v-spacer></v-spacer>
-
-            <v-btn
-                icon
-                @click="show = !show"
-            >
-                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-            </v-btn>
-        </v-card-actions>
-
     </v-card>
   </v-container>
 </template>
