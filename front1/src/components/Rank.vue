@@ -9,16 +9,14 @@
         어종 별 랭킹보기
       </v-card-title>
       <!-- 셀렉트박스 -->
-      <v-row align="center">
+      <v-row >
         <v-col
           class="d-flex mx-auto"
           cols="11"
-          sm="6"
         >
           <v-select
             :items="items"
             v-model="selected"
-            
             @change="getRankData()"
             dense
             outlined
@@ -26,36 +24,39 @@
           ></v-select>
         </v-col>
       </v-row>
-      <v-list style="text-align:center;">
-        <v-row style="font-weight:500;">
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" sm="6">순위</v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" sm="6"></v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="3" sm="6">ID</v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="3" sm="6">길이</v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" sm="6">등급</v-col>
-        </v-row>
-        <v-divider></v-divider>
-      </v-list>
-      <v-list v-for="list in rankList" :key="list.rank" style="text-align:center;">
-        <v-row>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" sm="6">{{list.rank}}</v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" sm="6">
-            <v-avatar color="red" v-if="list.thumbnail===null">
-              <v-icon dark>mdi-account-circle</v-icon>
-            </v-avatar>
-            <v-avatar dark color="orange" v-else>
-              <img
-                :src="list.thumbnail"
-              >
-            </v-avatar>
-          </v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="3" sm="6">{{list.id}}</v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="3" sm="6">{{list.length}}cm</v-col>
-          <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" sm="6">{{list.grade}}</v-col>
-        </v-row>  
-      </v-list>
+      
+      <div class="pa-3">
+        <v-list style="text-align:center;">
+          <v-row style="font-weight:500;">
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="2" >순위</v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="2"></v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="3">ID</v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="3">길이</v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="2">등급</v-col>
+          </v-row>
+          <v-divider></v-divider>
+        </v-list>
+        <v-list v-for="list in rankList" :key="list.rank" style="text-align:center;">
+          <v-row>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="2">{{list.rank}}</v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="2">
+              <v-avatar color="red" v-if="list.thumbnail===null">
+                <v-icon dark>mdi-account-circle</v-icon>
+              </v-avatar>
+              <v-avatar dark color="orange" v-else>
+                <img
+                  :src="list.thumbnail"
+                >
+              </v-avatar>
+            </v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="3">{{list.id}}</v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="3">{{list.length}}cm</v-col>
+            <v-col style="display:flex; align-items:center; justify-content: center;" cols="2">{{list.grade}}</v-col>
+          </v-row>  
+        </v-list>
+      </div>
     </v-card>
-    </v-container>
+  </v-container>
 </template>
 <script>
 

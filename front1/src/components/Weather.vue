@@ -140,8 +140,8 @@
               </div>
               <div style="display:flex; align-items:center; justify-content: center;" v-else>
                 <v-img
-                :src="require('../assets/darkSky.png')"
-                alt="darkSky image"
+                :src="require('../assets/small_logo.png')"
+                alt="image"
                 width="30"
                 ></v-img>
               </div>

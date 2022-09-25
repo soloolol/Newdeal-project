@@ -1,68 +1,70 @@
 <template>
-  <v-container fluid>
-    <v-card
-      v-if="!login"
-      light
-      class="mx-auto pa-2"
-      max-width="400"
-      align-items="center"
-    >
-      <v-row justify="center">
-        <v-col cols="12">
-          <v-row justify="center" class="pa-10">
-            <!-- <div id="naverIdLogin"></div> -->
-            <v-btn text elevation="0" @click="loginWithNaver"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="222"/></v-btn>
-          </v-row>
-          <v-row justify="center" class="pa-10">
-            <v-btn text elevation="0" @click="loginWithKakao"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></v-btn>
-          </v-row>
-        </v-col>
-      </v-row>
-    </v-card>
+  <v-container fill-height fluid>
+    <v-row align-items="center">
+      <v-card
+        v-if="!login"
+        light
+        class="mx-auto pa-2"
+        max-width="400"
+        align-items="center"
+      >
+        <v-row justify="center">
+          <v-col cols="12">
+            <v-row justify="center" class="pa-10">
+              <!-- <div id="naverIdLogin"></div> -->
+              <v-btn text elevation="0" @click="loginWithNaver"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="222"/></v-btn>
+            </v-row>
+            <v-row justify="center" class="pa-10">
+              <v-btn text elevation="0" @click="loginWithKakao"><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"/></v-btn>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-card>
 
-    <v-card
-      v-else
-      light
-      class="mx-auto pa-10"
-      max-width="400"
-      align-items="center"
-    >
-      <v-row justify="center" class="mx-10">
-        <v-col cols="12">
-          <v-row justify="center">
+      <v-card
+        v-else
+        light
+        class="mx-auto pa-10"
+        max-width="400"
+        align-items="center"
+      >
+        <v-row justify="center" class="mx-10">
+          <v-col cols="12">
+            <v-row justify="center">
 
-            <v-avatar size="110" color="red" :style="showIcon">
-              <v-icon dark>mdi-account-circle</v-icon>
-            </v-avatar>
+              <v-avatar size="110" color="red" :style="showIcon">
+                <v-icon dark>mdi-account-circle</v-icon>
+              </v-avatar>
 
-            <v-avatar size="110" color="orange" :style="showImg">
-              <img
-                :src="thumbnail"
-                alt="userProfile"
-              >
-            </v-avatar>
+              <v-avatar size="110" color="orange" :style="showImg">
+                <img
+                  :src="thumbnail"
+                  alt="userProfile"
+                >
+              </v-avatar>
 
-          </v-row>
-        </v-col>
-      </v-row>
+            </v-row>
+          </v-col>
+        </v-row>
 
-      <v-row>
-        <v-col cols="12">
-          <v-row justify="center">
-            <v-card-title justify="center" text-align="center" align-items="center">{{this.$store.state.userStore.userInfo.nickname}}</v-card-title>
-          </v-row>
-        </v-col>
-      </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-row justify="center">
+              <v-card-title justify="center" text-align="center" align-items="center">{{this.$store.state.userStore.userInfo.nickname}}</v-card-title>
+            </v-row>
+          </v-col>
+        </v-row>
 
-      <v-row justify="center" >
-        <v-col cols="12">
-          <v-row justify="center" class="mb-10">
-            <v-btn color="blue-grey" class="ma-2 white--text" @click="logOut">로그아웃</v-btn>
-          </v-row>
-        </v-col>
-      </v-row>
-    </v-card>
+        <v-row justify="center" >
+          <v-col cols="12">
+            <v-row justify="center" class="mb-10">
+              <v-btn color="blue-grey" class="ma-2 white--text" @click="logOut">로그아웃</v-btn>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-card>
 
+    </v-row>
   </v-container>
 </template>
 
