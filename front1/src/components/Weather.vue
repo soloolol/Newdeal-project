@@ -30,8 +30,9 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-card-text>
-        <v-row align="center">
+      <div class="pa-3">
+        <v-card-text>
+        <v-row >
           <v-col
             style="display:flex; align-items:center; justify-content: center;"
             class="text-h5"
@@ -80,7 +81,7 @@
           </v-col>
         </v-row>
       </v-card-text>
-      <v-divider></v-divider>
+      <v-divider color="#398DFF"></v-divider>
       <v-list-item>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >풍속</v-list-item-subtitle>
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;" >{{todayWeatherData.windSpeed}}m/s</v-list-item-subtitle>
@@ -96,7 +97,7 @@
         <v-list-item-subtitle style="display:flex; align-items:center; justify-content: center;">{{todayWeatherData.seaHeight}}m</v-list-item-subtitle>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider color="#398DFF"></v-divider>
 
       <v-list class="transparent">
         <v-list-item
@@ -150,6 +151,8 @@
           </v-list-item-title>
         </v-list-item>
       </v-list>
+      </div>
+
     </v-card>
   </v-container>
 </template>

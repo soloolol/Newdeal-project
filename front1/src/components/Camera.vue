@@ -33,7 +33,7 @@
             fab
             :style="cameraBtn"
             x-large
-            color="light-blue"
+            color="#398DFF"
             class="mb-2"
             @click="capture"
         >
@@ -80,13 +80,13 @@
                     <img class="fish_sample" :src="require('../assets/감성돔.jpg')" >
                     <br> 
                     <v-row class="mb-4">
-                    <v-col cols="12" justify="center" class="mb-10">
-                        <v-btn large rounded dark color="#6aafe6" refs="cookie_btn" type="button" @click="todayCloseWin">
+                    <v-col cols="12">
+                        <v-btn large rounded dark color="#398DFF" refs="cookie_btn" type="button" @click="todayCloseWin">
                         <strong>오늘 하루 보지않기</strong>
                         </v-btn>
                     </v-col>
-                    <v-col cols="12" justify="center" class="mb-20">
-                        <v-btn large rounded dark color="#6aafe6" type="button" @click="popClose">
+                    <v-col cols="12">
+                        <v-btn large rounded dark color="#398DFF" type="button" @click="popClose">
                         <strong>배틀 참전</strong>
                         </v-btn>
                     </v-col>

@@ -15,6 +15,7 @@
           cols="11"
         >
           <v-select
+            color="#398DFF"
             :items="items"
             v-model="selected"
             @change="getRankData()"
@@ -34,7 +35,7 @@
             <v-col style="display:flex; align-items:center; justify-content: center;" cols="3">길이</v-col>
             <v-col style="display:flex; align-items:center; justify-content: center;" cols="2">등급</v-col>
           </v-row>
-          <v-divider></v-divider>
+          <v-divider color="#398DFF"></v-divider>
         </v-list>
         <v-list v-for="list in rankList" :key="list.rank" style="text-align:center;">
           <v-row>
