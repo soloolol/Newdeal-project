@@ -127,7 +127,7 @@
         this.markersWindow = []
 
         //카카오 지도 마커 공통 이미지 설정
-        let imageSize = new kakao.maps.Size(30,30)
+        let imageSize = new kakao.maps.Size(40,40)
         let imageOption = {offset : new kakao.maps.Point(10,20)}
 
         for(let i=0;i<getData.length;i++)

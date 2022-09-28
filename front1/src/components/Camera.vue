@@ -80,16 +80,16 @@
                     <img class="fish_sample" :src="require('../assets/감성돔.jpg')" >
                     <br> 
                     <v-row class="mb-4">
-                    <v-col cols="12">
-                        <v-btn large rounded dark color="#398DFF" refs="cookie_btn" type="button" @click="todayCloseWin">
-                        <strong>오늘 하루 보지않기</strong>
-                        </v-btn>
-                    </v-col>
-                    <v-col cols="12">
-                        <v-btn large rounded dark color="#398DFF" type="button" @click="popClose">
-                        <strong>배틀 참전</strong>
-                        </v-btn>
-                    </v-col>
+                        <v-col cols="12">
+                            <v-btn large rounded dark color="#398DFF" refs="cookie_btn" type="button" @click="todayCloseWin">
+                            <strong>오늘 하루 보지않기</strong>
+                            </v-btn>
+                        </v-col>
+                        <v-col cols="12">
+                            <v-btn large rounded dark color="#398DFF" type="button" @click="popClose">
+                            <strong>배틀 참전</strong>
+                            </v-btn>
+                        </v-col>
                     </v-row>
                 </div>
             </v-card>
